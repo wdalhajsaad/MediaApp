@@ -22,12 +22,12 @@ class Test extends Component {
     };
   }
   componentDidMount() {
-  //API.GetNews().then((res)=>{
+  API.GetNews().then((res)=>{
  
-   //  this.setState({NewsList:res});
-    //   this.state.NewsList.map((u,i)=>{
+     this.setState({NewsList:res});
+      // this.state.NewsList.map((u,i)=>{
    // alert(u.title)});
-  //})
+  })
    
    
 
@@ -95,17 +95,37 @@ class Test extends Component {
       </View>
     );
   }
+  renderPage(index){
+    return (<Text>{index.title}</Text>)
+}
   renderNews(){
-    return(
-     <View style={{ backgroundColor: "red", height: hp("70%") }}>
-      <Swiper showsButtons={false}>
-      <View style={{ backgroundColor: "green", flex:1}}>
-       <Text> here is tetst</Text>
-      </View>
+     const swiperItems = this.state.NewsList.map(item => {
+            return(
+              <View style={{flex:1,backgroundColor:'white'}}>
+                  
+                     <Image 
+                      source={{uri :"https://www.media.gov.sa/"+item.photo}}
+                      style={{width: '100%', height: '100%'}}
+                    />
+                     <View style={{position: 'absolute', top:50, left: 0, right: 0, bottom:50, justifyContent: 'center', alignItems: 'center'}}>
+                   <Text>{item.title}</Text>
+                   </View>
+                   </View>
+            )
+        })
 
-       <View style={{ backgroundColor: "Yellow", flex:1}}>
-       <Text> here is tetst</Text>
-      </View>
+    return(
+      
+     <View style={{ backgroundColor: "red", height: hp("70%") }}>
+     
+      <Swiper
+       key={this.state.NewsList.length}
+       showsButtons={false}
+       >
+    {swiperItems}
+    
+
+     
       </Swiper>
          
         </View>
