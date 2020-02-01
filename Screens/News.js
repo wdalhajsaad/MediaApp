@@ -36,8 +36,6 @@ export default class News extends React.Component {
 
    GetNewsAPI = () => {
   
-
-    const { page, seed } = this.state;
     const url = `https://www.media.gov.sa/v3/mobile-apps/news/InternalPortal`;
     this.setState({ loading: true });
     fetch(url)
