@@ -89,7 +89,51 @@ class Test extends Component {
           </View>
          
           <View style={MenuStyle.swipperMainView}>
-            <Text>Hello Swiper</Text>
+            <View  style={MenuStyle.SwpperRow} >
+              <View style={MenuStyle.MenuImage}
+              >
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require("../assets/chat.png")}
+                />
+                <Text> المحادثات الفورية</Text>
+              </View>
+              <View style={MenuStyle.MenuImage}
+              >
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require("../assets/spalogo.png")}
+                />
+                <Text>  واس</Text>
+              </View>
+            </View>
+            <View style={MenuStyle.SwpperRow}>
+              <View
+                style={MenuStyle.MenuImage}
+              >
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require("../assets/twitter.png")}
+                />
+                <Text>  التغريدات</Text>
+              </View>
+              <View style={MenuStyle.MenuImage}
+              >
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require("../assets/faaliat.png")}
+                />
+                <Text>  فعاليات</Text>
+              </View>
+              <View style={MenuStyle.MenuImage}>
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require("../assets/gallery.png")}
+                />
+                <Text> المعرض الرقمي</Text>
+              </View>
+            </View>
+         
           </View>
         </Swiper>
       </View>
@@ -99,16 +143,17 @@ class Test extends Component {
     return (<Text>{index.title}</Text>)
 }
   renderNews(){
-     const swiperItems = this.state.NewsList.map(item => {
+     const swiperItems = this.state.NewsList.map((item,key )=> {
             return(
               <View style={{flex:1,backgroundColor:'white'}}>
-                  
+
                      <Image 
                       source={{uri :"https://www.media.gov.sa/"+item.photo}}
                       style={{width: '100%', height: '100%'}}
                     />
-                     <View style={{position: 'absolute', top:50, left: 0, right: 0, bottom:50, justifyContent: 'center', alignItems: 'center'}}>
-                   <Text>{item.title}</Text>
+                     <View style={{position: 'absolute', top:0, left: 0, right: 0, bottom:0, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgba(52, 52, 52, 0.4)",}}>
+                   <Text style={{fontWeight: 'bold',color:'white', fontSize: 20,paddingRight: 5,}}>{item.title}</Text>
+                   {/*<Text>{item.content}</Text>*/}
                    </View>
                    </View>
             )

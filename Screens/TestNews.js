@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { View, Text,FlatList,Image ,TouchableOpacity} from 'react-native';
 import * as API from '../API/API'
 import {SwipeListView} from 'react-native-swipe-list-view'
-class News extends Component {
-   static navigationOptions = {
-    headerStyle: { backgroundColor: "#006749"}
-    
-  };
+class TestNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +18,6 @@ class News extends Component {
   }
   componentDidMount() {
   API.GetNews().then((res)=>{
-    alert(res)
  
      this.setState({data:res});
       // this.state.NewsList.map((u,i)=>{
@@ -57,4 +52,4 @@ class News extends Component {
   }
 }
 
-export default News;
+export default TestNews;
