@@ -22,7 +22,7 @@ class News extends Component {
   }
   componentDidMount() {
   API.GetNews().then((res)=>{
-    alert(res)
+    //alert(res)
  
      this.setState({data:res});
       // this.state.NewsList.map((u,i)=>{

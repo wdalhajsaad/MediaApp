@@ -6,13 +6,13 @@ import Gallery from './Screens/Gallery'
 import TestAccordian from './Screens/TestAccordian'
 import TestNews from './Screens/TestNews'
 import Services from './Screens/Services'
+import Tecket from './Screens/Tecket'
 //import  * from '../co'
 
 export default function App() {
   return (
     //<Services />
-    //<TestNews />
-    //<TestAccordian />
+   // <Tecket />
    <Main />
   //<Test />
   //<Gallery />

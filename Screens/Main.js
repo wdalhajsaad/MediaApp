@@ -6,6 +6,7 @@ import Home from './Home'
 import Services from './Services'
 import Gallery from './Gallery'
 import About from './About'
+import Tecket from './Tecket'
 import {
     createBottomTabNavigator,
     createAppContainer,
@@ -16,6 +17,7 @@ from 'react-navigation';
 import { Header, Container, Content, ListItem } from 'native-base';
 import Styles from '../Styles/Styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import SideMenuStyle from '../Styles/SideMenuStyle'
 export default function Main() {
 
     return (
@@ -26,28 +28,28 @@ export default function Main() {
 }
 
 const CustomList = (props) => (
-    <Container style={{flex:1 ,backgroundColor:"red",paddingTop: 24,}}>
-        <Header style={{ xmarginTop:10,}}>
+    <Container style={{flex:1 ,backgroundColor:"#006749",paddingTop: 24,}}>
+        {/*<Header style={{ xmarginTop:10,}}>
             
-        </Header>
-        <Content contentContainerStyle={{backgroundColor:'#e7ebec',flex:1}}>
-            <View style={{flex: 1,flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', }} >
-                <ListItem style={{ resizeMode:'contain'  }} button onPress={() => this.props.navigation.navigate('MainScreen')} >
-                    <Text style={{paddingRight:10,fontWeight:'bold',textDecorationColor:"#000"}} >الرئيسية</Text>
+        </Header>*/}
+        <Content contentContainerStyle={{flex:1}}>
+            <View style={SideMenuStyle.MainView} >
+                <ListItem style={SideMenuStyle.ItemList} button onPress={() => this.props.navigation.navigate('MainScreen')} >
+                    <Text style={SideMenuStyle.LinkText} >الرئيسية</Text>
                    
                 </ListItem>
 
-                <ListItem style={{ resizeMode:"contain"  }} button onPress={() => props.navigation.navigate('About')} >
-                    <Text style={{paddingRight:10,fontWeight:'bold',textDecorationColor:"#000"}}>  عن الوزارة</Text>
+                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('About')} >
+                    <Text style={SideMenuStyle.LinkText}>  عن الوزارة</Text>
                     {/*<FontAwesome name='exclamation-circle' size={25} style={{ marginRight: 0, color: "#000" }} />*/}
                 </ListItem>
 
-                <ListItem style={{ resizeMode: "contain",  }} button onPress={() => props.navigation.navigate('preactivation')} >
-                    <Text style={{paddingRight:10,fontWeight:'bold',textDecorationColor:"#000"}}>   البيانات المفتوحة </Text>
+                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('preactivation')} >
+                    <Text style={SideMenuStyle.LinkText}>   البيانات المفتوحة </Text>
                     
                 </ListItem>
 
-                <View style={{paddingTop:30,alignItems:'center'}}>
+                <View style={{justifyContent:'center',alignContent: 'center', alignItems:'center',position: 'absolute',bottom:0}}>
                     <Text> جميع الحقوق محفوظة © لوزارة الاعلام</Text>
                     <Text></Text>
                 </View>
@@ -63,7 +65,8 @@ const StackNavgitor = createStackNavigator({
     Events,
     Services,
     Gallery,
-    About
+    About,
+    Tecket,
 
 
 },
