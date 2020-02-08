@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text,FlatList,Image ,TouchableOpacity} from 'react-native';
 import * as API from '../API/API'
+import Styles from "../Styles/Styles";
+import Fonts from '../Styles/Fonts'
 import {SwipeListView} from 'react-native-swipe-list-view'
 class News extends Component {
    static navigationOptions = {
@@ -41,11 +43,11 @@ class News extends Component {
               renderItem={({ item,rowMap }) => (
               <View style={{flexDirection: 'row',}} >
               <View>
-              <Image source={{uri :"https://www.media.gov.sa/" + item.photo}} style={{width:100,height:100}} />
+              <Image source={{uri :"https://www.media.gov.sa/" + item.photo}} style={{width:100,height:100, borderRadius: 3,marginTop: 5,}} />
               </View>
               <View style={{flex:1,}}>
-              <Text style={{ textAlign: 'right',fontSize: 16, }}>{item.title}</Text>
-               <Text style={{ textAlign: 'right' }}>{item.content.substr(0,100)+'....'}</Text>
+              <Text style={Fonts.NewsTitleList}>{item.title}</Text>
+               <Text style={Fonts.SupTextList}>{item.content.substr(0,100)+'....'}</Text>
               </View>
               </View>
               )}

@@ -80,7 +80,7 @@ fetch('https://services.media.gov.sa/Blagh/Blagh/BlaghService.svc/InqueryBlaghV2
         this.setState({Result : JSON.parse(JsonResult.InqueryBlaghV2Result)});
         this.setState({Loading:false});
         alert(this.state.Result.message);
-        this.props.navigation.navigate('Result', { RequestResult: this.state.Result.message });
+        //this.props.navigation.navigate('Result', { RequestResult: this.state.Result.message });
        // alert(this.state.Result.message);
     })
     .catch((error) => { 

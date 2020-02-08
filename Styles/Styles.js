@@ -11,11 +11,10 @@ export default StyleSheet.create({
     BaseText:{
        // fontFamily:'Cochin',
         fontSize:20,
+         fontFamily:'Montserrat'
         
         
     },
-    TextTite:{
-     fontWeight:'bold'
-    }
+   
 
 })

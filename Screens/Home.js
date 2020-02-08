@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image,TouchableOpacity, } from "react-native";
 import Styles from "../Styles/Styles";
 import MenuStyle from "../Styles/MenuStyle";
+import Fonts from '../Styles/Fonts'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -50,7 +51,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/services.png")}
                 />
-                <Text>الخدمات الالكترونية</Text>
+                <Text style={MenuStyle.TextFont}>الخدمات الالكترونية</Text>
                 </TouchableOpacity>
               </View>
             
@@ -63,7 +64,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/followup.png")}
                 />
-                <Text> متابعة الطلب</Text>
+                <Text style={MenuStyle.TextFont}> متابعة الطلب</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -78,7 +79,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/info.png")}
                 />
-                <Text> الدعم الفني</Text>
+                <Text style={MenuStyle.TextFont}> الدعم الفني</Text>
                 </TouchableOpacity>
               </View>
               <View style={MenuStyle.MenuImage}
@@ -90,7 +91,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/play.png")}
                 />
-                <Text> البث المباشر</Text>
+                <Text style={MenuStyle.TextFont}> البث المباشر</Text>
                 </TouchableOpacity>
               </View>
               <View style={MenuStyle.MenuImage}>
@@ -101,7 +102,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/news.png")}
                 />
-                <Text> الاخبار</Text>
+                <Text style={MenuStyle.TextFont}> الاخبار</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -119,7 +120,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/chat.png")}
                 />
-                <Text> المحادثات الفورية</Text>
+                <Text style={MenuStyle.TextFont}> المحادثات الفورية</Text>
                 </TouchableOpacity>
               </View>
               <View style={MenuStyle.MenuImage} >
@@ -129,7 +130,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/spalogo.png")}
                 />
-                <Text>  واس</Text>
+                <Text style={MenuStyle.TextFont}>  واس</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -141,7 +142,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/twitter.png")}
                 />
-                <Text>  التغريدات</Text>
+                <Text style={MenuStyle.TextFont}>  التغريدات</Text>
                 </TouchableOpacity>
               </View>
               <View style={MenuStyle.MenuImage}>
@@ -161,7 +162,7 @@ class Home extends Component {
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/gallery.png")}
                 />
-                <Text> المعرض الرقمي</Text>
+                <Text style={MenuStyle.TextFont}> المعرض الرقمي</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -184,8 +185,8 @@ class Home extends Component {
                       style={{width: '100%', height: '100%'}}
                     />
                      <View style={{position: 'absolute', top:0, left: 0, right: 0, bottom:0, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgba(52, 52, 52, 0.4)",}}>
-                   <Text style={{fontWeight: 'bold',color:'white', fontSize: 20,paddingRight: 5,}}>{item.title}</Text>
-                   <Text style={{paddingRight: 5,color:'white'}}>{item.content.substr(0,150)}</Text>
+                   <Text style={Fonts.SwiperTitle}>{item.title}</Text>
+                   <Text style={Fonts.SupText}>{item.content.substr(0,150)}</Text>
                    </View>
                    </View>
             )
