@@ -7,6 +7,7 @@ import Services from './Services'
 import Gallery from './Gallery'
 import About from './About'
 import Tecket from './Tecket'
+import Enquire from './Enquire'
 import {
     createBottomTabNavigator,
     createAppContainer,
@@ -67,6 +68,7 @@ const StackNavgitor = createStackNavigator({
     Gallery,
     About,
     Tecket,
+    Enquire,
 
 
 },

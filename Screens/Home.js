@@ -57,7 +57,7 @@ class Home extends Component {
               <View style={MenuStyle.MenuImage}
               >
                <TouchableOpacity style={{alignItems:'center'}}
-              onPress={() => this.props.navigation.navigate('News')}
+              onPress={() => this.props.navigation.navigate('Enquire')}
               >
                 <Image
                   style={{ width: 50, height: 50 }}

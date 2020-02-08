@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import { View, TouchableOpacity, Text, StyleSheet} from "react-native";
+import {ScrollView, View, TouchableOpacity, Text, StyleSheet} from "react-native";
 import { Colors } from '../Styles/Colors';
 import Icon from "react-native-vector-icons/MaterialIcons";
 

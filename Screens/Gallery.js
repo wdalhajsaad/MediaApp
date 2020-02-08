@@ -42,6 +42,7 @@ export default class Gallery extends Component {
    this.setState({
      ModalVisibleStatus: visible,
       imageuri: imageURL,
+ 
     });
   // alert('here we are !'+imageURL+visible);
   }
