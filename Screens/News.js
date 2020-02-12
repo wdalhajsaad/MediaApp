@@ -35,7 +35,7 @@ class News extends Component {
 
   render() {
     return (
-      <View style={{flex:1, padding:10,}}>
+      <View style={{flex:1, padding:10,},Styles.statusBar}>
         <Text> الاخبار </Text>
          <FlatList
               data={this.state.data}
@@ -45,9 +45,8 @@ class News extends Component {
               <View>
               <Image source={{uri :"https://www.media.gov.sa/" + item.photo}} style={{width:100,height:100, borderRadius: 3,marginTop: 5,}} />
               </View>
-              <View style={{flex:1,}}>
+              <View style={{flex:1,alignContent: 'center',justifyContent:'center'}}>
               <Text style={Fonts.NewsTitleList}>{item.title}</Text>
-               <Text style={Fonts.SupTextList}>{item.content.substr(0,100)+'....'}</Text>
               </View>
               </View>
               )}

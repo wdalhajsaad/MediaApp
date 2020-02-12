@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { View, Text,StyleSheet,TextInput,TouchableOpacity } from "react-native";
 import Spinner from '../Components/Spinner';
 import FormsStyle from '../Styles/FormsStyle';
+import Fonts from '../Styles/Fonts';
+import Communications from 'react-native-communications';
 
 class Tecket extends Component {
       static navigationOptions = {
@@ -94,13 +96,15 @@ class Tecket extends Component {
       <View style={FormsStyle.Maincontainer}>
         <TextInput
           style={FormsStyle.input}
+          //placeholderStyle={{}}
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="next"
-          placeholder=" اسم مقدم البلاغ"
+          placeholder="   الإســـم"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
+          
           //value={this.state.Name}
           onChangeText={Name => this.setState({ Name })}
         />
@@ -110,7 +114,7 @@ class Tecket extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="next"
-          placeholder="  رقم الجوال"
+          placeholder="   الجــوال"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
@@ -123,7 +127,7 @@ class Tecket extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="next"
-          placeholder=" عنوان البلاغ"
+          placeholder="  الموضـوع"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
@@ -136,7 +140,7 @@ class Tecket extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="next"
-          placeholder=" نص البلاغ"
+          placeholder=" نص الرسالة"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           // value={this.state.Content}
@@ -146,10 +150,29 @@ class Tecket extends Component {
         />
 
         {this.renderButton()}
+          <TouchableOpacity onPress={() => Communications.phonecall('1988', true)}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم   1988 </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
 }
-
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgb(253,253,253)',
+  },
+  holder: {
+    flex: 0.25,
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 15,
+     fontFamily:'Montserrat',
+  },
+});
 export default Tecket;
 

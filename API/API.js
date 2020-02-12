@@ -23,5 +23,22 @@ const url=`https://www.media.gov.sa/v3/mobile-apps/news/instagram`;
         throw error;
       })
    )
+}
+
+
+export const GetFaaliat=()=>{
+const url=`https://faaliat.sa/GridWebAPI/api/EntityEvents`;
+  return(fetch(url, {
+  headers: {
+              'Entity': '1',
+               //'Content-Type': 'application/json',
+            }})
+      .then(res => res.json())
+      .catch(error => {
+       // this.setState({ error, loading: false });
+        console.log(error);
+        throw error;
+      })
+   )
 
 }

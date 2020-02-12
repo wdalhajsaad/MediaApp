@@ -3,11 +3,18 @@ import { View, Text,StyleSheet,TextInput,TouchableOpacity  } from 'react-native'
 import Spinner from '../Components/Spinner';
 import FormsStyle from '../Styles/FormsStyle';
 
+import Communications from 'react-native-communications';
+
 class Enquire extends Component {
-      static navigationOptions = {
-    headerStyle: { backgroundColor: "#006749"}
+      static navigationOptions  = ({ navigation }) => ({
+    headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
+   title:'متابعة الطلب ',
+    headerTitleStyle : { flex:1 ,alignSelf: 'center' ,fontFamily:'Montserrat',color:'white'},
     
-  };
+       
+    
+    
+  });
   constructor(props) {
     super(props);
     this.state = {
@@ -105,7 +112,7 @@ fetch('https://services.media.gov.sa/Blagh/Blagh/BlaghService.svc/InqueryBlaghV2
                   autoCorrect={false}
                   keyboardType='phone-pad'
                   returnKeyType="next"
-                  placeholder='رقم البلاغ'
+                  placeholder='رقم الطلب'
                   underlineColorAndroid='rgba(0,0,0,0)'
                   placeholderTextColor="#808080"
                   textAlign='right'
@@ -118,7 +125,7 @@ fetch('https://services.media.gov.sa/Blagh/Blagh/BlaghService.svc/InqueryBlaghV2
                   autoCorrect={false}
                   keyboardType='phone-pad'
                   returnKeyType="next"
-                  placeholder='رقم الجوال'
+                  placeholder=' الجــوال'
                   underlineColorAndroid='rgba(0,0,0,0)'
                   placeholderTextColor="#808080"
                   textAlign='right'
@@ -126,11 +133,31 @@ fetch('https://services.media.gov.sa/Blagh/Blagh/BlaghService.svc/InqueryBlaghV2
 
              
                 {this.renderButton()}
+                <TouchableOpacity onPress={() => Communications.phonecall('1988', true)}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم   1988 </Text>
+          </View>
+        </TouchableOpacity>
 
             </View>
     );
   }
 }
 
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgb(253,253,253)',
+  },
+  holder: {
+    flex: 0.25,
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 15,
+     fontFamily:'Montserrat',
+  },
+});
 
 export default Enquire;

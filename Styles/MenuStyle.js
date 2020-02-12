@@ -15,7 +15,7 @@ export default StyleSheet.create({
         },
         swipperMainView:{
             flex: 1,
-             backgroundColor: "#9DD6EB" 
+             backgroundColor: "#006749" 
              },
 
          SwpperRow:{  

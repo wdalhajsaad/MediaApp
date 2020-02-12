@@ -25,12 +25,14 @@ export default StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 5,
          width: "95%",
-        marginTop:6
+        marginTop:6,
+         fontFamily:'Montserrat'
     },
     buttonText: {
         color: '#fff',
         textAlign: 'center',
-        fontWeight: '700',
+       // fontWeight: '700',
+         fontFamily:'Montserrat'
        
 
     },
@@ -41,7 +43,8 @@ export default StyleSheet.create({
         marginBottom: 5,
         padding: 6,
         color: '#000',
-        borderRadius: 5
+        borderRadius: 5,
+        fontFamily:'Montserrat'
 
     },
     input1: {
@@ -53,7 +56,8 @@ export default StyleSheet.create({
         color: '#000',
         borderRadius: 5,
         justifyContent: 'flex-start',
-         textAlignVertical: 'top'
+         textAlignVertical: 'top',
+          fontFamily:'Montserrat'
     },
     headrStyle: {
         backgroundColor: '#ecf0f1'
@@ -75,6 +79,14 @@ export default StyleSheet.create({
         //resizeMode: 'cover', // or 'stretch'
         width: '100%',
         height: '100%',
+    },
+     chanelContainer: {
+        backgroundColor: '#006749',
+        //paddingVertical: 15,
+        borderRadius: 5,
+        width: "100%",
+        //marginTop:6,
+        fontFamily:'Montserrat'
     },
 
 })

@@ -19,10 +19,11 @@ export default StyleSheet.create({
     },
     LinkText:{
         paddingRight:10,
-        fontWeight:'bold',
+        //fontWeight:'bold',
         textDecorationColor:"#000",
         flex:1,
-       color:'white'
+       color:'white',
+       fontFamily:'Montserrat'
         }
 
 })

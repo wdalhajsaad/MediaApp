@@ -3,11 +3,7 @@ import { Text, View, StyleSheet,TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import Styles from '../Styles/Styles'
 import FormsStyle from '../Styles/FormsStyle';
-class Chanals extends Component {
-   static navigationOptions = {
-    headerStyle: { backgroundColor: "#006749"}
-    
-  };
+class CardTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,4 +32,4 @@ class Chanals extends Component {
   }
 }
 
-export default Chanals;
+export default CardTest;

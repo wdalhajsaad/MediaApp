@@ -9,6 +9,9 @@ import Services from './Screens/Services'
 import Tecket from './Screens/Tecket'
 import Chanals from './Screens/Chanals'
 import * as Font from "expo-font";
+import CardTest from './Screens/CardTest'
+import About from './Screens/About'
+import ChanalList from './Screens/ChanalList'
 //import  * from '../co'
 
 export default class App extends Component {
@@ -29,15 +32,29 @@ export default class App extends Component {
     this._loadFontsAsync();
   }
   render() {
-  return (
+    if(this.state.loaded==true){
+      return (
     //<Services />
-   // <Tecket />
-  // <Chanals />
-   <Main />
+   //<CardTest />
+   //<Chanals />
+   <ChanalList />
+//<About />
+   //<Main />
   //<Test />
   //<Gallery />
   );
   }
+  else{
+     return (
+
+       <View><Text>No font</Text>
+       </View>
+     )
+
+  }
+
+    }
+  
 }
 
 const styles = StyleSheet.create({

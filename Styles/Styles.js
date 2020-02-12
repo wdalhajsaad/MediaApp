@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     Maincontainer: {
@@ -15,6 +16,13 @@ export default StyleSheet.create({
         
         
     },
+    statusBar: {
+    marginTop: Constants.statusBarHeight,
+    flex: 1,
+    flexDirection: 'column',
+    //alignItems:'center'
+  },
+
    
 
 })

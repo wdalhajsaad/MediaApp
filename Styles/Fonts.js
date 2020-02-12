@@ -7,6 +7,9 @@ export default StyleSheet.create({
     SwiperTitle:{
           fontFamily:'Montserrat',
           //fontWeight: 'bold',
+         position: 'absolute',
+           backgroundColor: "rgba(52, 52, 52, 0.8)",
+           bottom:2,
           color:'white',
           fontSize: 20,
           paddingRight: 5,

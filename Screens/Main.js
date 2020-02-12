@@ -8,6 +8,8 @@ import Gallery from './Gallery'
 import About from './About'
 import Tecket from './Tecket'
 import Enquire from './Enquire'
+import Chanals from './Chanals'
+import Faaliat from './Faaliat'
 import {
     createBottomTabNavigator,
     createAppContainer,
@@ -51,7 +53,7 @@ const CustomList = (props) => (
                 </ListItem>
 
                 <View style={{justifyContent:'center',alignContent: 'center', alignItems:'center',position: 'absolute',bottom:0}}>
-                    <Text> جميع الحقوق محفوظة © لوزارة الاعلام</Text>
+                    <Text style={SideMenuStyle.LinkText}> جميع الحقوق محفوظة © لوزارة الاعلام</Text>
                     <Text></Text>
                 </View>
             </View>
@@ -69,6 +71,9 @@ const StackNavgitor = createStackNavigator({
     About,
     Tecket,
     Enquire,
+    Chanals,
+    Faaliat,
+
 
 
 },
