@@ -1,15 +1,19 @@
 import React, { Component } from "react";
-import { View, Text,StyleSheet,TextInput,TouchableOpacity } from "react-native";
+import { View, Text,StyleSheet,TextInput,TouchableOpacity ,KeyboardAvoidingView} from "react-native";
 import Spinner from '../Components/Spinner';
 import FormsStyle from '../Styles/FormsStyle';
 import Fonts from '../Styles/Fonts';
+import Styles from "../Styles/Styles";
 import Communications from 'react-native-communications';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 class Tecket extends Component {
-      static navigationOptions = {
-    headerStyle: { backgroundColor: "#006749"}
-    
-  };
+     static navigationOptions  = ({ navigation }) => ({
+    headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
+    title:'الرئيسية-> الدعم الفني   ',
+    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai'  },
+    headerTitleAlign: 'center'
+  });
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +40,15 @@ class Tecket extends Component {
             </TouchableOpacity>
         );
     }
+Checknumber=(phone)=>{
+  if(phone.length===14)
+  return phone;
+  if(phone.length===10)
+  return '966'+phone;
+  
 
+
+}
         
   onInqueryClick(){
     this.setState({Loading:true});
@@ -47,7 +59,7 @@ class Tecket extends Component {
                 alert('الرجاء إدخال عنوان البلاغ'); 
                 return;
             }
-            if(this.state.MobileNo==='')
+            if(this.state.MobileNo===''|| this.state.MobileNo.lenght<10 )
             {
                 this.setState({Loading:false});
                 alert('الرجاء إدخال رقم الجوال');
@@ -59,10 +71,11 @@ class Tecket extends Component {
                 alert('الرجاء إدخال محتوى البلاغ');
                 return;
             }    
-            
+            var phone = Checknumber(this.state.MobileNo);
+            alert(phone)
             var screenPost=this;
-            var data = "token=jdu765dtyejewleld&token_secret=jdheydhd83732djdjdkeueyd7d6d53jdk&system_id=17&"+
-                        "title="+this.state.Title+"&mobile="+this.state.MobileNo+"&status=56&name="+this.state.Name+"&email="+this.state.Email+"&"+
+            var data = "token=jf8d7dhdekie&token_secret=lakjsdfeo92737&system_id=1&"+
+                        "title="+this.state.Title+"&mobile="+this.state.MobileNo+"&status=1&ticket_type=6&name="+this.state.Name+"&email="+this.state.Email+"&"+
                         "content="+this.state.Content;
 
             var xhr = new XMLHttpRequest();
@@ -70,19 +83,24 @@ class Tecket extends Component {
 
             xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) { 
-                //console.log(this.responseText); 
+                console.log(this.responseText); 
                 screenPost.setState({Loading:false});
-                //alert(JSON.parse(this.responseText).message);
+                alert(JSON.parse(this.responseText).message);
+
+            }
+            else{
+                 console.log(this.responseText); 
+                  console.log(this.readyState); 
 
             }
             }
             );
 
-            xhr.open("POST", "http://tss.moci.gov.sa/tera/ticket/api/addTicket/");
+            xhr.open("POST", "https://tss.media.gov.sa/tera/ticket/api/addTicket/");
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             xhr.setRequestHeader("cache-control", "no-cache"); 
             xhr.send(data);
-            this.props.navigation.navigate('Home');
+            //this.props.navigation.navigate('Home');
 
     }
     catch (error) {
@@ -92,8 +110,16 @@ class Tecket extends Component {
   }
 
   render() {
+    
+const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
     return (
-      <View style={FormsStyle.Maincontainer}>
+      
+       <KeyboardAwareScrollView
+      //style={{ backgroundColor: '#4c69a5' }}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      contentContainerStyle={[FormsStyle.Maincontainer,Styles.statusBar]}
+      scrollEnabled={false}
+    >
         <TextInput
           style={FormsStyle.input}
           //placeholderStyle={{}}
@@ -148,14 +174,17 @@ class Tecket extends Component {
           numberOfLines={4}
           onChangeText={Content => this.setState({ Content })}
         />
-
+ 
         {this.renderButton()}
-          <TouchableOpacity onPress={() => Communications.phonecall('1988', true)}>
-          <View style={styles.holder}>
+         <View style={styles.holder}>
+          <TouchableOpacity  onPress={() => Communications.phonecall('1988', true)}>
             <Text style={styles.text}>للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم   1988 </Text>
-          </View>
         </TouchableOpacity>
-      </View>
+       
+         </View>
+          </KeyboardAwareScrollView>
+         
+        
     );
   }
 }

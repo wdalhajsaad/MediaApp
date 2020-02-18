@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet,Text,View,ImageBackground,Image,TouchableOpacity,TextInput,Button} from 'react-native';
+import { StyleSheet,Text,View,ImageBackground,Image,TouchableOpacity,TextInput,Button,Linking} from 'react-native';
 import Events from './Events'
 import News from './News'
 import Home from './Home'
@@ -10,6 +10,20 @@ import Tecket from './Tecket'
 import Enquire from './Enquire'
 import Chanals from './Chanals'
 import Faaliat from './Faaliat'
+import ChanalList from './ChanalList'
+import NewsDetails from './NewsDetails'
+import Tweet from './Tweet'
+import FormsStyle from '../Styles/FormsStyle';
+import Fonts from '../Styles/Fonts';
+import Styles from "../Styles/Styles";
+
+import { Colors } from "../Styles/Colors";
+import {
+  Collapse,
+  CollapseHeader,
+  CollapseBody
+} from "accordion-collapse-react-native";
+import WassRss from './WassRss'
 import {
     createBottomTabNavigator,
     createAppContainer,
@@ -18,10 +32,11 @@ import {
 } 
 from 'react-navigation';
 import { Header, Container, Content, ListItem } from 'native-base';
-import Styles from '../Styles/Styles';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SideMenuStyle from '../Styles/SideMenuStyle'
 export default function Main() {
+
 
     return (
        <Appcontainer />
@@ -37,7 +52,7 @@ const CustomList = (props) => (
         </Header>*/}
         <Content contentContainerStyle={{flex:1}}>
             <View style={SideMenuStyle.MainView} >
-                <ListItem style={SideMenuStyle.ItemList} button onPress={() => this.props.navigation.navigate('MainScreen')} >
+                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Home')} >
                     <Text style={SideMenuStyle.LinkText} >الرئيسية</Text>
                    
                 </ListItem>
@@ -49,6 +64,43 @@ const CustomList = (props) => (
 
                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('preactivation')} >
                     <Text style={SideMenuStyle.LinkText}>   البيانات المفتوحة </Text>
+                    
+                </ListItem>
+                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => Linking.openURL("https://www.media.gov.sa/page/conditionsroles")} >
+                    <Text style={SideMenuStyle.LinkText}>   اللوائح والانضمة </Text>
+                    
+                </ListItem >
+ 
+                <ListItem  >
+                <View style={{backgroundColor:'yallow',width:'100%'}} >
+        <Collapse>
+          <CollapseHeader >
+              <Text style={{color:'white',paddingRight: 20,fontFamily:'Montserrat', width:'100%'}}> روابط مهمة</Text>
+          </CollapseHeader>
+          <CollapseBody>
+            <TouchableOpacity style={FormsStyle.CollapseHeder}
+                >
+                <Text style={FormsStyle.buttonText} > الهيئة العامة للمرئي والمسموع </Text>
+            </TouchableOpacity>
+             <TouchableOpacity style={FormsStyle.CollapseHeder}
+                >
+                <Text style={FormsStyle.buttonText} > وكالة الانباء السعودية </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={FormsStyle.CollapseHeder}
+                >
+                <Text style={FormsStyle.buttonText} > هيئة الاذاعة واتلفزيون </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={FormsStyle.CollapseHeder}
+                >
+                <Text style={FormsStyle.buttonText} >  اذاعة المملكة العربية السعودية </Text>
+            </TouchableOpacity>
+          </CollapseBody>
+        </Collapse>
+        
+      </View>  
+                </ListItem>
+                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Tecket')} >
+                    <Text style={SideMenuStyle.LinkText}>    اتصل بنا </Text>
                     
                 </ListItem>
 
@@ -73,6 +125,10 @@ const StackNavgitor = createStackNavigator({
     Enquire,
     Chanals,
     Faaliat,
+    ChanalList,
+    NewsDetails,
+    WassRss,
+    Tweet,
 
 
 
@@ -82,7 +138,7 @@ const StackNavgitor = createStackNavigator({
 return{
 
     headerRight:(
-        <FontAwesome name='bars' onPress={()=>navigation.openDrawer()}   style={{paddingRight: 10,color:'white'}}/>
+        <FontAwesome name='bars' onPress={()=>navigation.openDrawer()}   style={{width:20,height:20,paddingRight: 10,color:'white'}}/>
     ),
      headerLeft:(
          <Image  source={require("../assets/logo.png")} 

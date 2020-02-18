@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,I18nManager } from 'react-native';
+//import {Localization} from 'expo';
+I18nManager.forceRTL(false);
+I18nManager.allowRTL(false);
+import * as Localization from 'expo-localization';
 import Main from './Screens/Main';
 import Test from './Screens/Test';
 import Gallery from './Screens/Gallery'
@@ -12,6 +16,12 @@ import * as Font from "expo-font";
 import CardTest from './Screens/CardTest'
 import About from './Screens/About'
 import ChanalList from './Screens/ChanalList'
+import WassRss from './Screens/WassRss'
+import Tweet from './Screens/Tweet'
+import LinkCollapse from './AboutParts/LinkCollapse'
+import TestCollapse from './Testing/TestCollapse'
+import TryShare from './Testing/TryShare'
+import AccordionTest from './Testing/AccordionTest'
 //import  * from '../co'
 
 export default class App extends Component {
@@ -23,22 +33,29 @@ export default class App extends Component {
   _loadFontsAsync = async () => {
     await Font.loadAsync({
       // add as many fonts as you want here .... 
-      Montserrat: require("./assets/fonts/Almarai-Regular.ttf")
+      Montserrat: require("./assets/fonts/Almarai-Regular.ttf"),
+      Almarai: require("./assets/fonts/Almarai-Light.ttf"),
+      FontBold: require("./assets/fonts/Almarai-Bold.ttf")
     });
     this.setState({ loaded: true });
   };
 
   componentDidMount() {
     this._loadFontsAsync();
+    //var lang=Localization.isRTL;
+    //alert(lang)
   }
   render() {
     if(this.state.loaded==true){
       return (
     //<Services />
-   //<CardTest />
+   //<Tweet />
    //<Chanals />
-   <ChanalList />
-//<About />
+  // <ChanalList />
+   <AccordionTest />
+   //<TestCollapse />
+   //<WassRss />
+   //<LinkCollapse />
    //<Main />
   //<Test />
   //<Gallery />

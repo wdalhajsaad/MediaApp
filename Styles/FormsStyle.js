@@ -26,11 +26,22 @@ export default StyleSheet.create({
         borderRadius: 5,
          width: "95%",
         marginTop:6,
-         fontFamily:'Montserrat'
+       // marginLeft:10
+        // fontFamily:'Montserrat'
+    },
+     buttonShareing: {
+        backgroundColor: '#006749',
+        paddingVertical: 15,
+        borderRadius: 5,
+         width: "95%",
+        marginTop:6,
+        marginLeft:10
+        // fontFamily:'Montserrat'
     },
     buttonText: {
         color: '#fff',
-        textAlign: 'center',
+        textAlign: 'right',
+        paddingRight: 30,
        // fontWeight: '700',
          fontFamily:'Montserrat'
        
@@ -88,5 +99,30 @@ export default StyleSheet.create({
         //marginTop:6,
         fontFamily:'Montserrat'
     },
+      CollapseHeder: {
+        //backgroundColor: '#006749',
+        //paddingVertical: 15,
+        borderRadius: 5,
+         //width: "95%",
+         width:'100%',
+          borderBottomColor: 'white',
+       borderBottomWidth: 1,
+    paddingTop:2, 
+       textAlign:'right'
+       //backgroundColor:'red'
+        //marginTop:6,
+       // marginLeft:10
+        // fontFamily:'Montserrat'
+    },
+     collapseText: {
+        color: '#fff',
+        textAlign: 'right',
+        //paddingRight: 5,
+       // fontWeight: '700',
+      
+         fontFamily:'Montserrat',
+
+    },
+    
 
 })

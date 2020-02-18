@@ -15,7 +15,8 @@ export default StyleSheet.create({
     ItemList:{  
     width:'100%',
     backgroundColor:"#006749",
-    borderBottomWidth:1
+    borderBottomWidth:1,
+    //flexDirection: 'row', 
     },
     LinkText:{
         paddingRight:10,

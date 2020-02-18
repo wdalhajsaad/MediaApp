@@ -1,6 +1,7 @@
 /*This is an Example of Grid View in React Native*/
 import React, { Component } from 'react';
 import * as API from '../API/API'
+import Styles from "../Styles/Styles";
 //import rect in our project
 import {
   StyleSheet,
@@ -14,6 +15,12 @@ import {
 //import all the components we will need
 import FastImage from 'react-native-fast-image';
 export default class Gallery extends Component {
+   static navigationOptions  = ({ navigation }) => ({
+    headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
+    title:'الرئيسية-> المعرض الرقمي   ',
+    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal' },
+    headerTitleAlign: 'center'
+  });
   constructor() {
     super();
     this.state = {
@@ -28,7 +35,7 @@ export default class Gallery extends Component {
     //  return { id: i, src: 'http://placehold.it/200x200?text=' + (i + 1) };
    // });
     API.GetGallery().then((res)=>{
-        alert(res);
+       // alert(res);
     this.setState({
       //Setting the data source
       
@@ -82,7 +89,7 @@ export default class Gallery extends Component {
     } else {
     return (
         
-      <View style={styles.MainContainer}>
+      <View style={styles.MainContainer,Styles.statusBarChanal}>
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
@@ -122,5 +129,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 100,
+  },
+   containerStyle: {
+    justifyContent: 'center',
+    flex: 1,
+    marginTop: 20,
+  },
+  fullImageStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '98%',
+    resizeMode: 'contain',
+  },
+  modelStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  closeButtonStyle: {
+    width: 25,
+    height: 25,
+    top: 9,
+    right: 9,
+    position: 'absolute',
   },
 });

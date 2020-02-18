@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {ScrollView, View, TouchableOpacity, Text, StyleSheet} from "react-native";
+import {ScrollView, View, TouchableOpacity, Text, StyleSheet,Image} from "react-native";
 import { Colors } from '../Styles/Colors';
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -9,25 +9,39 @@ export default class Accordian extends Component{
     constructor(props) {
         super(props);
         this.state = { 
-          data: props.data,
-          key:props.id,
-          expanded : false,
+         
         }
     }
   
   render() {
     return (
-       <View style={{paddingTop: 20,paddingLeft:10,paddingRight:10,}} key={this.props.id}>
+       <View style={{paddingLeft:10,paddingRight:10,flex:1}} >
             <TouchableOpacity style={styles.row} onPress={()=>this.toggleExpand()}>
                 
                 <Icon name={this.state.expanded ? 'keyboard-arrow-down' : 'keyboard-arrow-left'} size={30} color={Colors.WHITE} />
-                <Text style={[styles.title, styles.font]}>{this.props.title}</Text>
+                <Text style={[styles.title, styles.font]}>عن وزارة الاعلام</Text>
             </TouchableOpacity>
-            <View style={styles.parentHr}/>
+            <View />
             {
                 this.state.expanded &&
                 <View style={styles.child}>
-                    <Text>{this.props.data}</Text>    
+                  <Image
+              source={{
+                uri: "https://www.media.gov.sa/theme/moci_v3/img/moci1.jpg?v14"
+              }}
+              style={{ width: '70%', height: '40%',alignSelf: 'center', }}
+              resizeMode='stretch'
+            />
+            
+             <Text style={{flexWrap: 'wrap',}} >
+              تعمل الوزارة في دورٍ فاعل بالتعريف بالهوية السعودية والمحافظة
+              عليها و نشر الصورة والقيم الإسلامية الحقيقية في حياة المواطن
+              السعودي وتعميق أبعاده، والتعبير عن انجازات المملكة العربية
+              السعودية ودورها الإيجابي في كافة المحافل و المناسبات الإقليمية
+              والدولية. كما تساهم الوزارة في رفع الوعي والأدوار التي تقوم بها
+              المملكة العربية السعودية محلياُ وعربياً واسلامياً وعالمياً،
+              ومواجهة كل المعلومات المغالطة عن المملكة.
+            </Text>
                 </View>
             }
        </View>
@@ -48,7 +62,7 @@ const styles = StyleSheet.create({
     },
     row:{
         flexDirection: 'row',
-        justifyContent:'space-between',
+        //justifyContent:'space-between',
         height:56,
         paddingLeft:25,
         paddingRight:18,
@@ -60,11 +74,11 @@ const styles = StyleSheet.create({
     parentHr:{
         height:1,
         color: Colors.WHITE,
-        width:'100%'
+        //width:'100%'
     },
     child:{
         backgroundColor: Colors.LIGHTGRAY,
-        padding:16,
+       // padding:16,
     }
     
 });

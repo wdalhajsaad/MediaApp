@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image,TouchableOpacity, } from "react-native";
+import { View, Text, StyleSheet, Image,TouchableOpacity,Linking } from "react-native";
 import Styles from "../Styles/Styles";
 import MenuStyle from "../Styles/MenuStyle";
 import Fonts from '../Styles/Fonts'
@@ -91,7 +91,7 @@ class Home extends Component {
               <View style={MenuStyle.MenuImage}
               >
                <TouchableOpacity style={{alignItems:'center'}}
-              onPress={() => this.props.navigation.navigate('Chanals')}
+              onPress={() => this.props.navigation.navigate('ChanalList')}
               >
                 <Image
                   style={{ width: 50, height: 50 }}
@@ -120,18 +120,18 @@ class Home extends Component {
               <View style={MenuStyle.MenuImage}
               >
                <TouchableOpacity style={{alignItems:'center'}}
-              onPress={() => this.props.navigation.navigate('News')}
+              onPress={() => Linking.openURL("https://lcsys.gov.sa/gcam-licenses/new")}
               >
                 <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require("../assets/chat.png")}
+                  style={{ width: 60, height: 60 }}
+                  source={require("../assets/reg.png")}
                 />
-                <Text style={MenuStyle.TextFont}> المحادثات الفورية</Text>
+                <Text style={MenuStyle.TextFont}>  تسجيل الاعلاميين</Text>
                 </TouchableOpacity>
               </View>
               <View style={MenuStyle.MenuImage} >
                <TouchableOpacity style={{alignItems:'center'}}
-               onPress={() => this.props.navigation.navigate('News')}>
+               onPress={() => this.props.navigation.navigate('WassRss')}>
                 <Image
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/spalogo.png")}
@@ -143,7 +143,7 @@ class Home extends Component {
             <View style={MenuStyle.SwpperRow}>
               <View style={MenuStyle.MenuImage}>
                <TouchableOpacity style={{alignItems:'center'}}
-                onPress={() => this.props.navigation.navigate('News')}>
+                onPress={() => this.props.navigation.navigate('Tweet')}>
                 <Image
                   style={{ width: 50, height: 50 }}
                   source={require("../assets/twitter.png")}
