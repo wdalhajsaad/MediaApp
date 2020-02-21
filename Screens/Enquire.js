@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from "react-native";
 import Spinner from "../Components/Spinner";
 import FormsStyle from "../Styles/FormsStyle";
@@ -40,7 +41,7 @@ class Enquire extends Component {
     }
     return (
       <TouchableOpacity
-        style={FormsStyle.buttonContainer1}
+        style={FormsStyle.buttonShareing}
         onPress={this.onInqueryClick.bind(this)}
       >
         <Text style={FormsStyle.buttonText}> استعلام </Text>
@@ -64,6 +65,7 @@ class Enquire extends Component {
   }
 
   onInqueryClick() {
+    Keyboard.dismiss;
     this.setState({ Loading: true });
     try {
       if (this.state.BlaghNo === "") {
@@ -121,7 +123,7 @@ class Enquire extends Component {
        API.GetTicketDaya(this.state.BlaghNo,this.state.MobileNo).then(res=>res)
         .then(JsonResult => {
            this.setState({ Loading: false });
-          // alert(JsonResult.status);
+           alert(JsonResult.status);
           if(JsonResult.status===200){
              this.setState({
             Result:JsonResult  
@@ -130,7 +132,9 @@ class Enquire extends Component {
             alert(this.state.Result.message);
           }
           else if (JsonResult.status===404){
-            alert(this.state.Result.message);
+            alert("يوجد خطأ في المدخلات");
+             alert(this.state.Result.message);
+            
             
           }
          
@@ -175,7 +179,7 @@ class Enquire extends Component {
           autoCorrect={false}
           keyboardType="phone-pad"
           returnKeyType="next"
-          placeholder=" الجــوال"
+          placeholder=" 966XXXXXXXXX"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"

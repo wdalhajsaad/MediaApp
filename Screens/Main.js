@@ -12,7 +12,10 @@ import Chanals from './Chanals'
 import Faaliat from './Faaliat'
 import ChanalList from './ChanalList'
 import NewsDetails from './NewsDetails'
+import SevicesDeatails from './SevicesDeatails'
+import AccordionAbout from './AccordionAbout'
 import Tweet from './Tweet'
+import Social from './Social'
 import FormsStyle from '../Styles/FormsStyle';
 import Fonts from '../Styles/Fonts';
 import Styles from "../Styles/Styles";
@@ -57,7 +60,7 @@ const CustomList = (props) => (
                    
                 </ListItem>
 
-                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('About')} >
+                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('AccordionAbout')} >
                     <Text style={SideMenuStyle.LinkText}>  عن الوزارة</Text>
                     {/*<FontAwesome name='exclamation-circle' size={25} style={{ marginRight: 0, color: "#000" }} />*/}
                 </ListItem>
@@ -67,7 +70,7 @@ const CustomList = (props) => (
                     
                 </ListItem>
                  <ListItem style={SideMenuStyle.ItemList} button onPress={() => Linking.openURL("https://www.media.gov.sa/page/conditionsroles")} >
-                    <Text style={SideMenuStyle.LinkText}>   اللوائح والانضمة </Text>
+                    <Text style={SideMenuStyle.LinkText}>   اللوائح والانظمة </Text>
                     
                 </ListItem >
  
@@ -78,19 +81,28 @@ const CustomList = (props) => (
               <Text style={{color:'white',paddingRight: 20,fontFamily:'Montserrat', width:'100%'}}> روابط مهمة</Text>
           </CollapseHeader>
           <CollapseBody>
+          <TouchableOpacity style={FormsStyle.CollapseHeder}
+               onPress={() => Linking.openURL("https://www.media.gov.sa")}
+                >
+                <Text style={FormsStyle.buttonText} >    بوابة وزارة الاعلام </Text>
+            </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
+               onPress={() => Linking.openURL("http://www.gcam.gov.sa/ar/Pages/default.aspx")}
                 >
                 <Text style={FormsStyle.buttonText} > الهيئة العامة للمرئي والمسموع </Text>
             </TouchableOpacity>
              <TouchableOpacity style={FormsStyle.CollapseHeder}
+              onPress={() => Linking.openURL("https://www.spa.gov.sa/")}
                 >
                 <Text style={FormsStyle.buttonText} > وكالة الانباء السعودية </Text>
             </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
+             onPress={() => Linking.openURL("http://www.sba.sa/ar")}
                 >
                 <Text style={FormsStyle.buttonText} > هيئة الاذاعة واتلفزيون </Text>
             </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
+             onPress={() => Linking.openURL("https://www.sr.sa/ar/")}
                 >
                 <Text style={FormsStyle.buttonText} >  اذاعة المملكة العربية السعودية </Text>
             </TouchableOpacity>
@@ -101,6 +113,11 @@ const CustomList = (props) => (
                 </ListItem>
                  <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Tecket')} >
                     <Text style={SideMenuStyle.LinkText}>    اتصل بنا </Text>
+                   
+                </ListItem>
+                
+                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Social')} >
+                    <Text style={SideMenuStyle.LinkText}> حسابات الوزارة بوسائل التواصل الإجتماعي </Text>
                     
                 </ListItem>
 
@@ -129,6 +146,9 @@ const StackNavgitor = createStackNavigator({
     NewsDetails,
     WassRss,
     Tweet,
+    SevicesDeatails,
+    AccordionAbout,
+    Social,
 
 
 
@@ -138,7 +158,7 @@ const StackNavgitor = createStackNavigator({
 return{
 
     headerRight:(
-        <FontAwesome name='bars' onPress={()=>navigation.openDrawer()}   style={{width:20,height:20,paddingRight: 10,color:'white'}}/>
+        <FontAwesome size={ 25 } name='bars' onPress={()=>navigation.openDrawer()}   style={{color:'white',paddingRight: 15,}}/>
     ),
      headerLeft:(
          <Image  source={require("../assets/logo.png")} 

@@ -21,22 +21,29 @@ export default StyleSheet.create({
         width: "95%"
     },
     buttonContainer1: {
+        //flexDirection: 'row',
+        justifyContent:'flex-end',
+        alignSelf: 'center',
+         alignItems:'center',
         backgroundColor: '#006749',
         paddingVertical: 15,
         borderRadius: 5,
-         width: "95%",
+         width: "100%",
         marginTop:6,
        // marginLeft:10
         // fontFamily:'Montserrat'
     },
      buttonShareing: {
+           justifyContent:'flex-end',
+         // flexDirection: 'row',
+         alignItems:'center',
         backgroundColor: '#006749',
         paddingVertical: 15,
         borderRadius: 5,
          width: "95%",
         marginTop:6,
-        marginLeft:10
-        // fontFamily:'Montserrat'
+       // marginLeft:10,
+        fontFamily:'Montserrat'
     },
     buttonText: {
         color: '#fff',
@@ -122,6 +129,19 @@ export default StyleSheet.create({
       
          fontFamily:'Montserrat',
 
+    },
+     AccordionHeader: {
+         flex:1,
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignSelf: 'center',
+        backgroundColor: '#006749',
+        paddingVertical: 15,
+        borderRadius: 5,
+         width: "95%",
+        marginTop:6,
+       // marginLeft:10
+        // fontFamily:'Montserrat'
     },
     
 

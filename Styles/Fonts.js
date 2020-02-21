@@ -27,10 +27,12 @@ export default StyleSheet.create({
 
     },
     NewsTitleList:{
-         fontFamily:'Montserrat',
+           fontFamily:'Montserrat',
           //fontWeight: 'bold',
           color:'black',
-          fontSize: 15,
+          //fontSize: 15,
+          flexShrink: 1,
+          //textAlign: 'left',
           paddingRight: 5,
 
     }

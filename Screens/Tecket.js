@@ -10,7 +10,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 class Tecket extends Component {
      static navigationOptions  = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
-    title:'الرئيسية-> الدعم الفني   ',
+    title:' الدعم الفني   ',
     headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai'  },
     headerTitleAlign: 'center'
   });
@@ -34,7 +34,7 @@ class Tecket extends Component {
             );
         }
         return (
-            <TouchableOpacity style={FormsStyle.buttonContainer1}
+            <TouchableOpacity style={FormsStyle.buttonShareing}
                 onPress={this.onInqueryClick.bind(this)} >
                 <Text style={FormsStyle.buttonText} > إرسال </Text>
             </TouchableOpacity>
@@ -177,8 +177,8 @@ const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
  
         {this.renderButton()}
          <View style={styles.holder}>
-          <TouchableOpacity  onPress={() => Communications.phonecall('1988', true)}>
-            <Text style={styles.text}>للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم   1988 </Text>
+          <TouchableOpacity style={{justifyContent:'center', alignItems:'center'}} onPress={() => Communications.phonecall('1988', true)}>
+            <Text style={{justifyContent:'space-evenly'},styles.text}>للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم الموحد لوزارة الاعلام  1988 </Text>
         </TouchableOpacity>
        
          </View>

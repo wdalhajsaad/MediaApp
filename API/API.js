@@ -45,6 +45,7 @@ const url=`https://faaliat.sa/GridWebAPI/api/EntityEvents`;
   return(fetch(url, {
   headers: {
               'Entity': '1',
+              //'pageSize':'10'
                //'Content-Type': 'application/json',
             }})
       .then(res => res.json())

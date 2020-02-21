@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import * as API from '../API/API'
 import Styles from "../Styles/Styles";
+import FormsStyle from '../Styles/FormsStyle';
+import Spinner from '../Components/Spinner';
 //import rect in our project
 import {
   StyleSheet,
@@ -9,16 +11,19 @@ import {
   FlatList,
   ActivityIndicator,
   Image,
+  Text,
+  Button,
   TouchableOpacity,
-  Modal
+
 } from 'react-native';
+import Modal from "react-native-modal";
 //import all the components we will need
 import FastImage from 'react-native-fast-image';
 export default class Gallery extends Component {
    static navigationOptions  = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
-    title:'الرئيسية-> المعرض الرقمي   ',
-    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal' },
+    title:' المعرض الرقمي',
+    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontWeight:'normal' },
     headerTitleAlign: 'center'
   });
   constructor() {
@@ -27,6 +32,7 @@ export default class Gallery extends Component {
       dataSource: [],
       imageuri: '',
       ModalVisibleStatus: false,
+      Loading:true
     };
   }
   componentDidMount() {
@@ -40,12 +46,22 @@ export default class Gallery extends Component {
       //Setting the data source
       
       dataSource: res,
+      Loading:false
     });
   })
+  }
+   RenderSpinner() {
+
+    if (this.state.Loading) {
+      return (
+        <Spinner SizeSpinner='large' />
+      );
+    }
   }
    ShowModalFunction(visible, imageURL) {
     //handler to handle the click on image of Grid
     //and close button on modal
+    //alert(visible);
    this.setState({
      ModalVisibleStatus: visible,
       imageuri: imageURL,
@@ -53,43 +69,28 @@ export default class Gallery extends Component {
     });
   // alert('here we are !'+imageURL+visible);
   }
-  render() {
-       if (this.state.ModalVisibleStatus) {
-      return (
-        <Modal
-          transparent={false}
-          animationType={'fade'}
-          visible={this.state.ModalVisibleStatus}
-          onRequestClose={() => {
-            this.ShowModalFunction(!this.state.ModalVisibleStatus, '');
-          }}>
-          <View style={styles.modelStyle}>
+  render() {  
+      
+    return (
+        
+      <View style={styles.MainContainer,Styles.statusBarChanal}>
+      {this.RenderSpinner()}
+       <Modal isVisible={this.state.ModalVisibleStatus}>
+          <View style={{ flex: 1 }}>
             <Image
               style={styles.fullImageStyle}
               source={{ uri: this.state.imageuri }}
               //resizeMode={FastImage.resizeMode.contain}
             />
-            <TouchableOpacity
-              activeOpacity={0.5}
-              style={styles.closeButtonStyle}
-              onPress={() => {
-                this.ShowModalFunction(!this.state.ModalVisibleStatus, '');
-              }}>
-              <Image
-                source={{
-                  uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/close.png',
-                }}
-                style={{ width: 35, height: 35, marginTop: 16 }}
-              />
+            <TouchableOpacity  onPress={() => {this.ShowModalFunction(false,''); }} style={{flexDirection:'center'},FormsStyle.buttonContainer1} >
+            <Text  style={{flexDirection:'center',justifyContent:'center',alignContent:'center',alignItems:'center',alignSelf: 'center',},FormsStyle.buttonText} >
+              اغلاق
+            </Text>
             </TouchableOpacity>
           </View>
         </Modal>
-      );
-    } else {
-    return (
-        
-      <View style={styles.MainContainer,Styles.statusBarChanal}>
+      
+      
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
@@ -116,7 +117,7 @@ export default class Gallery extends Component {
     );
     }
   }
-}
+
 
 const styles = StyleSheet.create({
   MainContainer: {
@@ -137,22 +138,24 @@ const styles = StyleSheet.create({
   },
   fullImageStyle: {
     justifyContent: 'center',
+    alignContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    height: '70%',
     width: '98%',
     resizeMode: 'contain',
   },
   modelStyle: {
     flex: 1,
+    height:300,
+    width:300,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    //backgroundColor: 'rgba(0,0,0,0.2)',
   },
   closeButtonStyle: {
-    width: 25,
-    height: 25,
-    top: 9,
-    right: 9,
+    width: 40,
+    height: 40,
+  alignSelf: 'center',
     position: 'absolute',
   },
 });

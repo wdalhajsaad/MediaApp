@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import FormsStyle from '../Styles/FormsStyle';
 import Fonts from '../Styles/Fonts';
 import Styles from "../Styles/Styles";
-export default class Accordian extends Component{
+export default class AboutMinister extends Component{
 
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ export default class Accordian extends Component{
        <View  >
             <TouchableOpacity style={FormsStyle.AccordionHeader} onPress={()=>this.toggleExpand()}>
              <Icon name={this.state.expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.GRAY} style={{alignSelf:'flex-end'}} />
-                <Text style={FormsStyle.buttonText }>عن وزارة الاعلام</Text>
+                <Text style={FormsStyle.buttonText }> وزار الاعلام</Text>
                
             </TouchableOpacity>
             <View style={styles.parentHr}/>
@@ -38,13 +38,8 @@ export default class Accordian extends Component{
              // resizeMode='stretch'
             />
              <Text style={{flexWrap: 'wrap',padding:10, fontFamily:'Montserrat',}} >
-              تعمل الوزارة في دورٍ فاعل بالتعريف بالهوية السعودية والمحافظة
-              عليها و نشر الصورة والقيم الإسلامية الحقيقية في حياة المواطن
-              السعودي وتعميق أبعاده، والتعبير عن انجازات المملكة العربية
-              السعودية ودورها الإيجابي في كافة المحافل و المناسبات الإقليمية
-              والدولية. كما تساهم الوزارة في رفع الوعي والأدوار التي تقوم بها
-              المملكة العربية السعودية محلياُ وعربياً واسلامياً وعالمياً،
-              ومواجهة كل المعلومات المغالطة عن المملكة.
+              صدر الأمر الملكي الكريم لخادم الحرمين الشريفين الملك سلمان
+               بن عبدالعزيز بتعيين معالي الأستاذ تركي بن عبدالله الشبانة وزيراً للإعلام.
             </Text>
                 </View>
             }

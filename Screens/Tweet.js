@@ -12,7 +12,7 @@ import {
 class Tweet extends Component {
     static navigationOptions  = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749",textAlign: 'center',paddingBottom: 10,},
-    title:'الرئيسية-> تويتر   ',
+    title:'تويتر',
     headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai',paddingBottom: 10, },
     headerTitleAlign: 'center'
   

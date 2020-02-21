@@ -6,6 +6,7 @@ I18nManager.allowRTL(false);
 import * as Localization from 'expo-localization';
 import Main from './Screens/Main';
 import Test from './Screens/Test';
+import Social  from './Screens/Social'
 import Gallery from './Screens/Gallery'
 import TestAccordian from './Screens/TestAccordian'
 import TestNews from './Screens/TestNews'
@@ -13,7 +14,6 @@ import Services from './Screens/Services'
 import Tecket from './Screens/Tecket'
 import Chanals from './Screens/Chanals'
 import * as Font from "expo-font";
-import CardTest from './Screens/CardTest'
 import About from './Screens/About'
 import ChanalList from './Screens/ChanalList'
 import WassRss from './Screens/WassRss'
@@ -21,7 +21,6 @@ import Tweet from './Screens/Tweet'
 import LinkCollapse from './AboutParts/LinkCollapse'
 import TestCollapse from './Testing/TestCollapse'
 import TryShare from './Testing/TryShare'
-import AccordionTest from './Testing/AccordionTest'
 //import  * from '../co'
 
 export default class App extends Component {
@@ -49,14 +48,14 @@ export default class App extends Component {
     if(this.state.loaded==true){
       return (
     //<Services />
-   //<Tweet />
+   //<Social />
    //<Chanals />
   // <ChanalList />
-   <AccordionTest />
-   //<TestCollapse />
+   //<AccordionTest />
+   //<AccordionAbout />
    //<WassRss />
    //<LinkCollapse />
-   //<Main />
+   <Main />
   //<Test />
   //<Gallery />
   );

@@ -9,6 +9,7 @@ export default StyleSheet.create({
           backgroundColor: "blue",
           flex: 1,
           width: wp("100%"),
+          
           alignItems: "stretch",
          // paddingBottom:20
           

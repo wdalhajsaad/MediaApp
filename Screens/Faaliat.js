@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { View, Text,FlatList,Image } from 'react-native';
 import * as API from '../API/API'
 import Fonts from '../Styles/Fonts'
+import Spinner from '../Components/Spinner';
+import Styles from "../Styles/Styles";
 export default class Faaliat extends Component {
-     static navigationOptions = {
-    headerStyle: { backgroundColor: "#006749"}
-    
-  };
+       static navigationOptions  = ({ navigation }) => ({
+    headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
+    title:' فعاليات',
+    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai' },
+    headerTitleAlign: 'center'
+  
+  });
  constructor(props) {
     super(props);
     this.state = {
-        data:{}
+        data:{},
+        Loading:true
+
     };
   }
    componentDidMount() {
@@ -23,11 +30,20 @@ export default class Faaliat extends Component {
   })
 
   }
+    RenderSpinner() {
+
+    if (this.state.Loading) {
+      return (
+        <Spinner SizeSpinner='large' />
+      );
+    }
+  }
 
   render() {
     return (
-      <View>
-        <Text> الاخبار </Text>
+      <View style={Styles.statusBar}>
+       <Spinner SizeSpinner='large' />
+        {this.RenderSpinner()}
          <FlatList
               data={this.state.data}
               //ListEmptyComponent={this._listEmpty}

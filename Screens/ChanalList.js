@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,StyleSheet,FlatList,Image,Dimensions,ScrollView,TouchableOpacity,
- Modal
-
-
- } from 'react-native';
+import { View, Text,StyleSheet,FlatList,Image,Dimensions,ScrollView,TouchableOpacity } from 'react-native';
 import FormsStyle from '../Styles/FormsStyle';
 import { Colors } from '../Styles/Colors';
 import MenuStyle from "../Styles/MenuStyle";
@@ -12,12 +8,13 @@ import { FlatGrid } from 'react-native-super-grid';
 import Constants from 'expo-constants';
 import WebView from "react-native-webview"
 const deviceWidth = Dimensions.get('window').width;
+import Modal from "react-native-modal";
 
 class ChanalList extends Component {
    static navigationOptions  = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
-    title:'الرئيسية->  البث المباشر',
-    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal' },
+    title:'البث المباشر',
+    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai' },
     headerTitleAlign: 'center'
   });
   constructor(props) {
@@ -43,67 +40,46 @@ class ChanalList extends Component {
       const items = [
         
              { name: 'القناة الاولى', code: '#fff', pic:require('../ChanalsAssest/channel-1.jpg'),url:'https://www.youtube.com/embed/GPhLOf0Nm2s'}, 
-             { name: 'الرياضية', code: '#fff',pic:require('../ChanalsAssest/channel-2.jpg'),url:'https://www.youtube.com/embed/GPhLOf0Nm2s' },
-             { name: 'SBC', code: '#fff' ,pic:require('../ChanalsAssest/channel-3.jpg'),url:'https://www.youtube.com/embed/GPhLOf0Nm2s'},
-             { name: 'القران الكريم', code: '#fff' ,pic:require('../ChanalsAssest/channel-5.jpg'),url:'https://www.youtube.com/embed/GPhLOf0Nm2s'},
-             { name: 'الإخبارية', code: '#fff',pic:require('../ChanalsAssest/channel-6.jpg'),url:'https://www.youtube.com/embed/GPhLOf0Nm2s' },
-             { name: ' فعاليات', code: '#fff',pic:require('../ChanalsAssest/channel-7.jpg') ,url:'https://www.youtube.com/embed/GPhLOf0Nm2s'},
+             { name: 'الرياضية', code: '#fff',pic:require('../ChanalsAssest/channel-2.jpg'),url:'https://www.youtube.com/embed/bsK4QmZafpA' },
+             { name: 'SBC', code: '#fff' ,pic:require('../ChanalsAssest/channel-3.jpg'),url:'https://www.youtube.com/embed/A1YYkWPAwY0'},
+             { name: 'القران الكريم', code: '#fff' ,pic:require('../ChanalsAssest/channel-5.jpg'),url:'https://www.youtube.com/embed/NbMWqsjUS_c'},
+             { name: 'الإخبارية', code: '#fff',pic:require('../ChanalsAssest/channel-6.jpg'),url:'https://www.youtube.com/embed/SzJXaV2Rjog' },
+             { name: ' فعاليات', code: '#fff',pic:require('../ChanalsAssest/channel-7.jpg') ,url:'https://www.youtube.com/embed/9PajE4zKx1o'},
         
     ];
 const radois=[
      { name: 'إذاعة الرياض', code: '#fff',pic:require('../ChanalsAssest/radio-1.jpg') },
        { name: 'إذاعة جدة ', code: '#fff' ,pic:require('../ChanalsAssest/radio-2.jpg')},
-      { name: 'اذاعة القران الكريم', code: '#fff',pic:require('../ChanalsAssest/radio-3.jpg') }, 
-      { name: 'MIDNIGHT BLUE', code: '#fff' ,pic:require('../ChanalsAssest/radio-4.jpg')},
-       { name: 'MIDNIGHT BLUE', code: '#fff' ,pic:require('../ChanalsAssest/radio-5.jpg')},
+      { name: 'إذاعة القران الكريم', code: '#fff',pic:require('../ChanalsAssest/radio-3.jpg') }, 
+      { name: 'إذاعة السعودية', code: '#fff' ,pic:require('../ChanalsAssest/radio-4.jpg')},
+       { name: 'إذاعة نداء الاسلام  ', code: '#fff' ,pic:require('../ChanalsAssest/radio-5.jpg')},
      ]
  
-  if (this.state.ModalVisibleStatus) {
-      return (
-        <Modal
-          transparent={false}
-          animationType={'fade'}
-          visible={this.state.ModalVisibleStatus}
-          onRequestClose={() => {
-            this.HandelClick(!this.state.ModalVisibleStatus, '');
-          }}>
-           <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'}}>
-          <View style={styles.modelStyle}>
-           <WebView
+ 
+        
+    
+         return (
+    
+      <ScrollView style={Styles.statusBarChanal}>
+        <Modal 
+        
+        isVisible={this.state.ModalVisibleStatus}
+        >
+          <View style={{ flex: 1,alignContent:'center' }}>
+            <WebView
               javaScriptEnabled={true}
-              style={{borderWidth:1, height:100, width:300}}
+              style={{borderWidth:1, height:100, width:"100%"}}
               source={{
                 uri: this.state.churl
               }}
             />
-            <TouchableOpacity
-              activeOpacity={0.5}
-              style={styles.closeButtonStyle}
-              onPress={() => {
-                this.HandelClick(false, '');
-              }}>
-              <Image
-                source={{
-                  uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/close.png',
-                }}
-                style={{ width: 40, height: 40, marginTop: 16 }}
-              />
+            <TouchableOpacity  onPress={() => { this.HandelClick(!this.state.ModalVisibleStatus, '');}} style={{backgroundColor:'red'},FormsStyle.buttonContainer1} >
+            <Text  style={FormsStyle.buttonText} >
+              اغلاق
+            </Text>
             </TouchableOpacity>
           </View>
-          </View>
         </Modal>
-      );
-      }
-      else{
-         return (
-    
-      <ScrollView style={Styles.statusBarChanal}>
-      
       
        <FlatGrid
         itemDimension={130}
@@ -130,7 +106,7 @@ const radois=[
         )}
       />
 
-      <View><Text>القنوات الاذاعية</Text></View>
+      <View><Text style={{fontFamily:'Almarai'}}>القنوات الاذاعية</Text></View>
       <FlatGrid
         itemDimension={130}
         items={radois}
@@ -158,8 +134,10 @@ const radois=[
     );
       }
    
-  }
-}const styles = StyleSheet.create({
+  
+}
+
+const styles = StyleSheet.create({
   gridView: {
     marginTop: 20,
     flex: 1,
