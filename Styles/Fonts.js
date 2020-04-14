@@ -4,7 +4,7 @@ export default StyleSheet.create({
      fontWeight:'bold',
      fontFamily:'Montserrat'
     },
-    SwiperTitle:{
+   /* SwiperTitle:{
           fontFamily:'Montserrat',
           //fontWeight: 'bold',
          position: 'absolute',
@@ -13,6 +13,21 @@ export default StyleSheet.create({
           color:'white',
           fontSize: 20,
           paddingRight: 5,
+    },*/
+    SwiperTitle:{
+          fontFamily:'FontBold',
+          //fontWeight: 'bold',
+          alignSelf: 'center',
+         position: 'absolute',
+          textAlign: 'right',
+           backgroundColor: "rgba(52, 52, 52, 0.8)",
+           bottom:25,
+          color:'white',
+          fontSize: 15,
+          marginTop: 10,
+          paddingRight: 15,
+          // paddingLeft: 15,
+           lineHeight:25,
     },
     SupText:{
         paddingRight: 5,
@@ -30,11 +45,23 @@ export default StyleSheet.create({
            fontFamily:'Montserrat',
           //fontWeight: 'bold',
           color:'black',
+           textAlign: 'right',
           //fontSize: 15,
+           lineHeight:23,
           flexShrink: 1,
           //textAlign: 'left',
           paddingRight: 5,
 
+    },
+    TextUnder:{
+         fontFamily:'Almarai',
+         paddingRight: 5,
+         //textAlign:'left',
+         //flex: 1, 
+        // flexWrap: 'wrap'
+
     }
+
+
 })
     

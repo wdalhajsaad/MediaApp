@@ -7,6 +7,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
+
 //import { Card,} from 'react-native-elements'
 import Swiper from "react-native-swiper";
 import * as API from '../API/API'
@@ -181,20 +182,40 @@ class Home extends Component {
   renderPage(index){
     return (<Text>{index.title}</Text>)
 }
+//getPhote(item){
+  //if (item)
+//}
   renderNews(){
-     const swiperItems = this.state.NewsList.map(item=> {
+    const fdata = this.state.NewsList.filter(function(item){ 
+      
+    
+     
+         return item.id !=2652 && item.id!=2651 && item.id!=2647 && item.id!=2645 ;
+       }
+        // return item.id!=2652||item.id!=2651||item.id!=2647||item.id!=2645;
+      
+    )
+     const swiperItems = fdata.slice(0,4).map(item=> {
+      
             return(
-              <View style={{flex:1,backgroundColor:'white'}} key={item.id}>
-
-                     <Image 
+              <View style={{flex:1,backgroundColor:'#006749',flexDirection: 'column',}} key={item.id}>
+                  <View style={{flex:1,width: '100%', height: '70%'}} >
+                   <Image 
                       source={{uri :"https://www.media.gov.sa/"+item.photo}}
-                      style={{width: '100%', height: '100%'}}
-                      //resizeMode='contain'
+                      style={{width: '100%', height: '100%',}}
+                      resizeMode='cover'
                     />
-                     <View style={{position: 'absolute', top:0, left: 0, right: 0, bottom:0, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgba(52, 52, 52, 0.4)",}}>
+                  </View>
+                  <View style={{height: '20%'}}>
+                   <Text style={Fonts.SwiperTitle}>{item.title}</Text>
+                  </View>
+                    
+                     {/* <View style={{position: 'absolute', top:0, left: 0, right: 0, bottom:0, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgba(52, 52, 52, 0.4)",}}>
+                  <Text style={Fonts.SwiperTitle}>{item.title}</Text>
+                   
                    <Text style={Fonts.SwiperTitle}>{item.title}</Text>
                   
-                   </View>
+                   </View>*/}
                    </View>
             )
         })
@@ -217,7 +238,8 @@ class Home extends Component {
 
      
       </Swiper>
-         
+           
+        
         </View>
     )
   }

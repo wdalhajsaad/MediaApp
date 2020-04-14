@@ -28,7 +28,7 @@ export default StyleSheet.create({
         backgroundColor: '#006749',
         paddingVertical: 15,
         borderRadius: 5,
-         width: "100%",
+         width: "95%",
         marginTop:6,
        // marginLeft:10
         // fontFamily:'Montserrat'
@@ -48,7 +48,16 @@ export default StyleSheet.create({
     buttonText: {
         color: '#fff',
         textAlign: 'right',
-        paddingRight: 30,
+        //paddingRight: 30,
+       // fontWeight: '700',
+         fontFamily:'Montserrat'
+       
+
+    },
+     AboutTitle: {
+        color: '#fff',
+        textAlign: 'right',
+        paddingRight: 15,
        // fontWeight: '700',
          fontFamily:'Montserrat'
        
@@ -68,6 +77,8 @@ export default StyleSheet.create({
     input1: {
         width: "95%",
         //flex:1,
+         marginBottom: 5,
+        padding: 6,
         height: 150,
         backgroundColor: 'rgba(225,225,225,0.7)',
         //padding: 10,
@@ -107,13 +118,14 @@ export default StyleSheet.create({
         fontFamily:'Montserrat'
     },
       CollapseHeder: {
+          paddingRight:40,
         //backgroundColor: '#006749',
         //paddingVertical: 15,
         borderRadius: 5,
          //width: "95%",
          width:'100%',
-          borderBottomColor: 'white',
-       borderBottomWidth: 1,
+          //borderBottomColor: 'white',
+       //borderBottomWidth: 1,
     paddingTop:2, 
        textAlign:'right'
        //backgroundColor:'red'

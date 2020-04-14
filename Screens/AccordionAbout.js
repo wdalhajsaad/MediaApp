@@ -23,7 +23,7 @@ class AccordionAbout extends Component {
      this.state = {
    
      }
-  }
+  } 
 
  
   render() {
@@ -32,8 +32,8 @@ class AccordionAbout extends Component {
       <ScrollView style={styles.container}>
              <Accordian/>
              <AboutMinister/>
-            <MinistryWork />
-            <MinistryHestory />
+             <MinistryWork />
+             <MinistryHestory />
       </ScrollView>   
       </View>
        );

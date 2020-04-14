@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text,StyleSheet,TextInput,TouchableOpacity ,KeyboardAvoidingView} from "react-native";
+import { View, Text,StyleSheet,TextInput,TouchableOpacity ,KeyboardAvoidingView,Alert} from "react-native";
 import Spinner from '../Components/Spinner';
 import FormsStyle from '../Styles/FormsStyle';
 import Fonts from '../Styles/Fonts';
@@ -49,31 +49,48 @@ Checknumber=(phone)=>{
 
 
 }
-        
+ restField =() =>{
+  // alert('nice')
+ this.setState({Name:"",
+ MobileNo:'',
+Title:'',
+Content:''
+ });
+    };  
   onInqueryClick(){
     this.setState({Loading:true});
+     const MobileNo = this.state.MobileNo;
+     var screenPost=this;
+
     try {
             if(this.state.Title==='')
             {
                 this.setState({Loading:false});
-                alert('الرجاء إدخال عنوان البلاغ'); 
+              Alert.alert(" ",'الرجاء تعبيئة جميع البيانات'); 
                 return;
             }
-            if(this.state.MobileNo===''|| this.state.MobileNo.lenght<10 )
+            if(this.state.MobileNo==='' )
             {
                 this.setState({Loading:false});
-                alert('الرجاء إدخال رقم الجوال');
+               Alert.alert(" ",'الرجاء تعبيئة جميع البيانات');
                 return;
-            }       
+            } 
+            if(MobileNo.length < 10)  
+            {
+                this.setState({Loading:false});
+                 Alert.alert(" ",'رقم الجوال يتكون من 10 ارقام ');
+                 return;
+
+            }    
             if(this.state.Content==='')
             {
                 this.setState({Loading:false});
-                alert('الرجاء إدخال محتوى البلاغ');
+             Alert.alert(" ",'الرجاء تعبيئة جميع البيانات');
                 return;
             }    
-            var phone = Checknumber(this.state.MobileNo);
-            alert(phone)
-            var screenPost=this;
+            var phone =this.Checknumber(this.state.MobileNo);
+            //alert(phone)
+           // 
             var data = "token=jf8d7dhdekie&token_secret=lakjsdfeo92737&system_id=1&"+
                         "title="+this.state.Title+"&mobile="+this.state.MobileNo+"&status=1&ticket_type=6&name="+this.state.Name+"&email="+this.state.Email+"&"+
                         "content="+this.state.Content;
@@ -84,8 +101,12 @@ Checknumber=(phone)=>{
             xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) { 
                 console.log(this.responseText); 
-                screenPost.setState({Loading:false});
-                alert(JSON.parse(this.responseText).message);
+                screenPost.setState({Loading:false
+              
+                });
+               // alert(JSON.parse(this.responseText).message);
+             Alert.alert(" ","تم إرسال طلبك بنجاح ويمكننك متابعته برقم البلاغ من متابعة الطلب ");
+            screenPost.restField()
 
             }
             else{
@@ -130,7 +151,7 @@ const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
-          
+         value={this.state.Name}
           //value={this.state.Name}
           onChangeText={Name => this.setState({ Name })}
         />
@@ -139,11 +160,14 @@ const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
           style={FormsStyle.input}
           autoCapitalize="none"
           autoCorrect={false}
+          keyboardType="numeric"
           returnKeyType="next"
           placeholder="   الجــوال"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
+            maxLength = {10}
+             value={this.state.MobileNo}
           // value={this.state.Email}
           onChangeText={MobileNo => this.setState({ MobileNo })}
         />
@@ -157,7 +181,7 @@ const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
           textAlign="right"
-          //value={this.state.Title}
+          value={this.state.Title}
           onChangeText={Title => this.setState({ Title })}
         />
 
@@ -166,11 +190,12 @@ const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="next"
-          placeholder=" نص الرسالة"
+          placeholder=" نص الرسالة   "
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
-          // value={this.state.Content}
+           value={this.state.Content}
           multiline={true}
+          textAlign="right"
           numberOfLines={4}
           onChangeText={Content => this.setState({ Content })}
         />
@@ -199,7 +224,11 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontSize: 15,
+      paddingRight: 10,
+   // fontSize: 15,
+   textAlign: 'right', 
+      lineHeight:23,
+     textDecorationLine: 'underline',
      fontFamily:'Montserrat',
   },
 });

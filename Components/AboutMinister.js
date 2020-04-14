@@ -22,7 +22,7 @@ export default class AboutMinister extends Component{
        <View  >
             <TouchableOpacity style={FormsStyle.AccordionHeader} onPress={()=>this.toggleExpand()}>
              <Icon name={this.state.expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.GRAY} style={{alignSelf:'flex-end'}} />
-                <Text style={FormsStyle.buttonText }> وزار الاعلام</Text>
+                <Text style={FormsStyle.AboutTitle }> وزير الإعلام</Text>
                
             </TouchableOpacity>
             <View style={styles.parentHr}/>
@@ -30,16 +30,13 @@ export default class AboutMinister extends Component{
                 this.state.expanded &&
                 <View style={styles.child}>
                
-                  <Image
-                  source={{
-                   uri: "https://www.media.gov.sa/theme/moci_v3/img/moci1.jpg?v14"
-                   }}
-              style={{ width: 300, height: 150,alignSelf: 'center', }}
-             // resizeMode='stretch'
+                  <Image 
+                   source={require("../assets/minister.jpg")}
+              style={{ width: 300, height: 150,alignSelf: 'center',borderRadius: 5, }}
+             resizeMode='stretch'
             />
-             <Text style={{flexWrap: 'wrap',padding:10, fontFamily:'Montserrat',}} >
-              صدر الأمر الملكي الكريم لخادم الحرمين الشريفين الملك سلمان
-               بن عبدالعزيز بتعيين معالي الأستاذ تركي بن عبدالله الشبانة وزيراً للإعلام.
+             <Text style={{flexWrap: 'wrap',paddingRight:20,paddingLeft:10, paddingTop: 5, fontFamily:'Montserrat', textAlign: 'right'}} >
+             صدر الأمر الملكي الكريم لخادم الحرمين الشريفين الملك سلمان بن عبدالعزيز بتكليف معالي د. ماجد بن عبدالله القصبي وزيراً للإعلام.
             </Text>
                 </View>
             }
@@ -75,8 +72,11 @@ const styles = StyleSheet.create({
         color: Colors.WHITE,
         width:'100%'
     },
-    child:{
+     child:{
       //alignSelf:'baseline',
+      paddingTop:10,
+      paddingBottom:10,
+      borderRadius: 5,
       justifyContent:'center',
       //paddingBottom: 50,
       marginHorizontal:10,

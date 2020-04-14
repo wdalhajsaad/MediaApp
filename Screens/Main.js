@@ -11,6 +11,7 @@ import Enquire from './Enquire'
 import Chanals from './Chanals'
 import Faaliat from './Faaliat'
 import ChanalList from './ChanalList'
+import Regulations from './Regulations'
 import NewsDetails from './NewsDetails'
 import SevicesDeatails from './SevicesDeatails'
 import AccordionAbout from './AccordionAbout'
@@ -19,6 +20,7 @@ import Social from './Social'
 import FormsStyle from '../Styles/FormsStyle';
 import Fonts from '../Styles/Fonts';
 import Styles from "../Styles/Styles";
+import FaaliatDetails from './FaaliatDetails'
 
 import { Colors } from "../Styles/Colors";
 import {
@@ -61,45 +63,42 @@ const CustomList = (props) => (
                 </ListItem>
 
                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('AccordionAbout')} >
-                    <Text style={SideMenuStyle.LinkText}>  عن الوزارة</Text>
+                    <Text style={SideMenuStyle.LinkText}>عن الوزارة</Text>
                     {/*<FontAwesome name='exclamation-circle' size={25} style={{ marginRight: 0, color: "#000" }} />*/}
                 </ListItem>
 
-                <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('preactivation')} >
-                    <Text style={SideMenuStyle.LinkText}>   البيانات المفتوحة </Text>
-                    
-                </ListItem>
-                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => Linking.openURL("https://www.media.gov.sa/page/conditionsroles")} >
-                    <Text style={SideMenuStyle.LinkText}>   اللوائح والانظمة </Text>
+              
+                 <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Regulations')} >
+                    <Text style={SideMenuStyle.LinkText}>اللوائح والانظمة</Text>
                     
                 </ListItem >
  
                 <ListItem  >
-                <View style={{backgroundColor:'yallow',width:'100%'}} >
+                <View style={{backgroundColor:'yallow',width:'108%'}} >
         <Collapse>
           <CollapseHeader >
-              <Text style={{color:'white',paddingRight: 20,fontFamily:'Montserrat', width:'100%'}}> روابط مهمة</Text>
+              <Text style={{color:'white',paddingRight: 30,fontFamily:'Montserrat', width:'100%', textAlign: 'right',}}>روابط مهمة</Text>
           </CollapseHeader>
           <CollapseBody>
           <TouchableOpacity style={FormsStyle.CollapseHeder}
                onPress={() => Linking.openURL("https://www.media.gov.sa")}
                 >
-                <Text style={FormsStyle.buttonText} >    بوابة وزارة الاعلام </Text>
+                <Text style={{marginTop: 5,},FormsStyle.buttonText} >بوابة وزارة الاعلام</Text>
             </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
                onPress={() => Linking.openURL("http://www.gcam.gov.sa/ar/Pages/default.aspx")}
                 >
-                <Text style={FormsStyle.buttonText} > الهيئة العامة للمرئي والمسموع </Text>
+                <Text style={FormsStyle.buttonText} >الهيئة العامة للمرئي والمسموع</Text>
             </TouchableOpacity>
              <TouchableOpacity style={FormsStyle.CollapseHeder}
               onPress={() => Linking.openURL("https://www.spa.gov.sa/")}
                 >
-                <Text style={FormsStyle.buttonText} > وكالة الانباء السعودية </Text>
+                <Text style={FormsStyle.buttonText} >وكالة الانباء السعودية</Text>
             </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
              onPress={() => Linking.openURL("http://www.sba.sa/ar")}
                 >
-                <Text style={FormsStyle.buttonText} > هيئة الاذاعة واتلفزيون </Text>
+                <Text style={FormsStyle.buttonText} >هيئة الاذاعة واتلفزيون</Text>
             </TouchableOpacity>
             <TouchableOpacity style={FormsStyle.CollapseHeder}
              onPress={() => Linking.openURL("https://www.sr.sa/ar/")}
@@ -112,12 +111,12 @@ const CustomList = (props) => (
       </View>  
                 </ListItem>
                  <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Tecket')} >
-                    <Text style={SideMenuStyle.LinkText}>    اتصل بنا </Text>
+                    <Text style={SideMenuStyle.LinkText}>اتصل بنا</Text>
                    
                 </ListItem>
                 
                  <ListItem style={SideMenuStyle.ItemList} button onPress={() => props.navigation.navigate('Social')} >
-                    <Text style={SideMenuStyle.LinkText}> حسابات الوزارة بوسائل التواصل الإجتماعي </Text>
+                    <Text style={SideMenuStyle.LinkText}>حسابات الوزارة بوسائل التواصل الإجتماعي </Text>
                     
                 </ListItem>
 
@@ -149,6 +148,8 @@ const StackNavgitor = createStackNavigator({
     SevicesDeatails,
     AccordionAbout,
     Social,
+    Regulations,
+    FaaliatDetails
 
 
 
@@ -161,9 +162,11 @@ return{
         <FontAwesome size={ 25 } name='bars' onPress={()=>navigation.openDrawer()}   style={{color:'white',paddingRight: 15,}}/>
     ),
      headerLeft:(
+         <TouchableOpacity onPress={()=> navigation.navigate('Home')}>
          <Image  source={require("../assets/logo.png")} 
           style={{ height: 40,width:90,marginLeft:5, }}
          />
+         </TouchableOpacity>
     ),
     headerTransparent: true,
     headerStyle: { borderBottomWidth: 0 }

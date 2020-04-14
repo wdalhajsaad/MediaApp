@@ -4,11 +4,18 @@ import * as rssParser from 'react-native-rss-parser';
 import Fonts from '../Styles/Fonts'
 import Styles from "../Styles/Styles";
 import Spinner from '../Components/Spinner';
+import { WebView } from 'react-native-webview';
+import * as Help from '../API/Help'
 class WassRss extends Component {
       static navigationOptions  = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749",textAlign: 'center',},
-    title:'وكالة الانباء   ',
-    headerTitleStyle : { flex:1 ,textAlign: 'center' ,color:'white',paddingVertical: 15,fontWeight:'normal',fontFamily:'Almarai' },
+    //title:'وكالة الانباء   ',
+     headerTitle: (
+         <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+      <Image style={{ width: 55, height: 40 }} source={require("../assets/waslogo.png")}/>
+      </View>
+  ),
+    headerTitleStyle : { alignSelf: 'center',justifyContent:'center' },
     headerTitleAlign: 'center'
   
   });
@@ -21,13 +28,21 @@ class WassRss extends Component {
   }
    
  componentDidMount() {
+  // const date ='Mon, 24 Feb 2020 10:12:19 +0300';
+   
+
  return fetch('https://www.spa.gov.sa/rss.xml')
   .then((response) => response.text())
   .then((responseData) => rssParser.parse(responseData))
   .then((rss) => {
     //alert(rss.items[1].title);
-   // console.log(rss.items[1].title);
-    this.setState({data:rss.items,Loading:false});
+   // console.log(rss.items[1].title)
+  //alert(JSON.stringify(rss.items[0].published))
+    this.setState({
+      data:rss.items,
+      Loading:false
+      });
+
   }).catch(error=> {
        // this.setState({ error, loading: false });
         console.log(error);
@@ -59,10 +74,16 @@ class WassRss extends Component {
   );
 }
  HandelClick=(url)=>{
-//const c =url;
+//const c =urlظظalert(date[0]);
 Linking.openURL(url)
 //alert(JSON.stringify(url));
 
+ }
+ GetDate=(date)=>{
+  // alert(date.substring(4,6));
+   //  alert(date.substring(7,9));
+   
+   return date.substring(4,16);
  }
   render() {
     return (
@@ -84,15 +105,26 @@ Linking.openURL(url)
                          // Linking.openURL(item.guid)
                           }}
                     >
-              <View style={{flexDirection: 'row',}} >
+              <View style={{flexDirection: 'row',justifyContent:'flex-end'}} >
               
-              <View>
+             {/** <View>
               <Image source={require("../assets/spalogo.png")} style={{width:100,height:100, borderRadius: 3,marginTop: 5,}} />
-              </View>
-              <View style={{alignContent: 'center',justifyContent:'center',width:250,}}>
-              
-              <Text  adjustsFontSizeToFit style={Fonts.NewsTitleList}>{item.title}</Text>
-                 <Text>{item.pubDate}</Text>
+              </View> */
+
+             }
+              <View style={{paddingLeft:5,paddingRight:5}}>
+                 <Text  adjustsFontSizeToFit style={Fonts.NewsTitleList}>{item.title}</Text>
+                 <View style={{flexDirection:'row',flexWrap: 'wrap',width:'100%'}}>
+                 <View style={{width:'50%'}}>
+                 <Text style={{alignSelf: 'flex-start', textAlign:"left", color:'#C7C7C7',paddingLeft: 5,}}>  {Help.GetDateString(item.published)[1]}</Text>
+                 </View>
+                 <View style={{width:'50%'}}>
+                  <Text style={{ alignSelf: 'flex-end',textAlign:"right", color:'#C7C7C7',paddingRight:5,}}>  {Help.GetDateString(item.published)[0]}</Text>
+                 </View >
+  
+                  
+                   
+                  </View>
               </View>
               
                   

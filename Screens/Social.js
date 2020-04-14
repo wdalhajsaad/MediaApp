@@ -20,8 +20,8 @@ class Social extends Component {
      const items = [
         
              { name: 'يوتيوب', code: '#fff', pic:require('../Social/youtube.png'),url:'https://www.youtube.com/channel/UCriBeG1oMYlyJOrUsIy9rdg'}, 
-             { name: 'تويتر ', code: '#fff',pic:require('../Social/facebook.png'),url:'https://twitter.com/media_ksa' },
-             { name: 'فيسبوك', code: '#fff' ,pic:require('../Social/twitter.png'),url:'https://www.facebook.com/moci.ksa/'},
+             { name: 'تويتر ', code: '#fff',pic:require('../Social/facebook.png'),url:'https://www.facebook.com/moci.ksa/' },
+             { name: 'فيسبوك', code: '#fff' ,pic:require('../Social/twitter.png'),url:'https://twitter.com/media_ksa'},
              { name: ' انستقرام', code: '#fff' ,pic:require('../Social/instagram-sketched.png'),url:'https://www.instagram.com/media_ksa/'},
             
     ];
@@ -37,14 +37,14 @@ class Social extends Component {
         renderItem={({ item, index }) => (
           <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
           <TouchableOpacity
-          onPress={() =>  Linking.openURL("https://www.sr.sa/ar/")}
+          onPress={() =>  Linking.openURL(item.url)}
           >
           <Image
           source={item.pic}
          style={{width:165,height:100,marginTop:15,marginBottom: 5,}}
          resizeMode='contain'
           />
-          <View style={{flex:1,backgroundColor:'#006749',alignItems:'center'}}>
+          <View style={{flex:1,backgroundColor:'#006749',alignItems:'center',justifyContent:'center'}}>
             <Text style={styles.itemName}>{item.name}</Text>
            </View>
             </TouchableOpacity>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems:'center',
     //padding: 10,
-    height: 150,
+    height: 170,
   },
   itemName: {
     fontSize: 16,

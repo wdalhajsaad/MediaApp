@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Keyboard
+  Keyboard,Alert 
 } from "react-native";
 import Spinner from "../Components/Spinner";
 import FormsStyle from "../Styles/FormsStyle";
@@ -15,13 +15,14 @@ import Communications from "react-native-communications";
 class Enquire extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerStyle: { backgroundColor: "#006749", textAlign: "center" },
-    title: "الرئيسية-> متابعة الطلب  ",
+    title: "متابعة الطلب",
     headerTitleStyle: {
       flex: 1,
       textAlign: "center",
       color: "white",
       paddingVertical: 15,
-      fontWeight: "normal"
+      fontWeight: "normal",
+      fontFamily:'Almarai' 
     },
     headerTitleAlign: "center"
   });
@@ -66,18 +67,27 @@ class Enquire extends Component {
 
   onInqueryClick() {
     Keyboard.dismiss;
+     const MobileNo = this.state.MobileNo;
+
     this.setState({ Loading: true });
     try {
       if (this.state.BlaghNo === "") {
         this.setState({ Loading: false });
-        alert("الرجاء إدخال رقم البلاغ");
+        Alert.alert("","الرجاء إدخال رقم الطلب");
         return;
       }
       if (this.state.MobileNo === "") {
         this.setState({ Loading: false });
-        alert("الرجاء إدخال رقم الجوال");
+        Alert.alert(" ","الرجاء إدخال رقم الجوال");
         return;
       }
+        if(MobileNo.length < 10)  
+            {
+                this.setState({Loading:false});
+                 Alert.alert(" ",'رقم الجوال يتكون من 10 ارقام ');
+                 return;
+
+            }  
       /*  var screenPost=this;
             var data = +this.state.MobileNo+"&status=1&ticket_type=6&name="+this.state.Name+"&email="+this.state.Email+"&"+
                         "content="+this.state.Content;
@@ -120,20 +130,24 @@ class Enquire extends Component {
           "&blaghNum=" +
           this.state.BlaghNo
       )*/
+
        API.GetTicketDaya(this.state.BlaghNo,this.state.MobileNo).then(res=>res)
         .then(JsonResult => {
            this.setState({ Loading: false });
-           alert(JsonResult.status);
+          // alert(JsonResult.status);
           if(JsonResult.status===200){
              this.setState({
-            Result:JsonResult  
+            Result:JsonResult , 
+            BlaghNo:'',
+            MobileNo:''
           });
          // this.setState({ Loading: false });
-            alert(this.state.Result.message);
+            Alert.alert(" ",this.state.Result.message);
           }
           else if (JsonResult.status===404){
-            alert("يوجد خطأ في المدخلات");
-             alert(this.state.Result.message);
+            Alert.alert(" ","يوجد خطأ في المدخلات");
+            
+           //  alert(this.state.Result.message);
             
             
           }
@@ -144,10 +158,10 @@ class Enquire extends Component {
           // alert(this.state.Result.message);
         })
         .catch(error => {
-          alert(error);
+         // alert(error);
         });
     } catch (error) {
-      alert(error);
+     // alert(error);
       this.setState({ Loading: false });
     }
   }
@@ -179,9 +193,10 @@ class Enquire extends Component {
           autoCorrect={false}
           keyboardType="phone-pad"
           returnKeyType="next"
-          placeholder=" 966XXXXXXXXX"
+          placeholder=" 05XXXXXXX"
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#808080"
+          maxLength = {10}
           textAlign="right"
         />
 
@@ -191,7 +206,7 @@ class Enquire extends Component {
             onPress={() => Communications.phonecall("1988", true)}
           >
             <Text style={styles.text}>
-              للاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم 1988{" "}
+              لللاستفسارات أو الشكاوي والاقتراحات الاتصال على الرقم الموحد لوزارة الاعلام  1988 {" "}
             </Text>
           </TouchableOpacity>
         </View>
@@ -212,6 +227,10 @@ var styles = StyleSheet.create({
   },
   text: {
     fontSize: 15,
+    lineHeight:23,
+    textAlign: 'right', 
+    textDecorationLine: 'underline',
+    paddingRight: 10,
     fontFamily: "Montserrat"
   }
 });

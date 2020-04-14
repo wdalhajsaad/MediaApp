@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View,I18nManager } from 'react-native';
+import { StyleSheet, Text, View,I18nManager,Image } from 'react-native';
 //import {Localization} from 'expo';
 I18nManager.forceRTL(false);
 I18nManager.allowRTL(false);
@@ -21,6 +21,9 @@ import Tweet from './Screens/Tweet'
 import LinkCollapse from './AboutParts/LinkCollapse'
 import TestCollapse from './Testing/TestCollapse'
 import TryShare from './Testing/TryShare'
+import Regulations from './Screens/Regulations'
+import Faaliat from './Screens/Faaliat'
+import NewsDetails from './Screens/NewsDetails'
 //import  * from '../co'
 
 export default class App extends Component {
@@ -48,14 +51,18 @@ export default class App extends Component {
     if(this.state.loaded==true){
       return (
     //<Services />
-   //<Social />
-   //<Chanals />
+   //<Regulations />
+    //<Faaliat />
   // <ChanalList />
    //<AccordionTest />
    //<AccordionAbout />
    //<WassRss />
    //<LinkCollapse />
-   <Main />
+  
+    <Main />
+   
+ 
+  
   //<Test />
   //<Gallery />
   );
@@ -63,7 +70,18 @@ export default class App extends Component {
   else{
      return (
 
-       <View><Text>No font</Text>
+       <View style={{ backgroundColor:'#006749',flex:1,justifyContent:'center',alignContent: 'center',alignItems: "center"}}>
+         <View style={{width: 100, height: 30,justifyContent:'center',alignContent: 'center',alignItems: "center",}} >
+        <Image  source={require("./assets/logo.png")} 
+         
+            resizeMode='contain'
+         />
+          <View style={{backgroundColor:'red',borderRadius: 5,width:200,justifyContent:'center',alignItems: "center",alignContent: 'center'}}>
+         <Text style={{color:'white',fontWeight:"900", fontSize:30}}>نسخة تجريبية</Text>
+         </View>
+        
+       </View>
+       
        </View>
      )
 

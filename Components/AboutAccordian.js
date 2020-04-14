@@ -43,15 +43,10 @@ export default class AboutAccordian extends Component {
         </TouchableOpacity>
         <View style={styles.parentHr} />
         {this.state.expanded && (
-          <View style={{flex:1,backgroundColor:'red',height:'100%'}}>
-            <Image
-              source={{
-                uri: "https://www.media.gov.sa/theme/moci_v3/img/moci1.jpg?v14"
-              }}
-              style={{ width: '70%', height: '70%',alignSelf: 'center', }}
-            />
+          <View style={{flex:1,height:'90%',paddingTop:50}}>
+           
             <View style={{flex: 1,}}>
-             <Text style={{flexWrap: 'wrap',}} >
+             <Text style={{flexWrap: 'wrap', textAlign: 'right'}} >
               تعمل الوزارة في دورٍ فاعل بالتعريف بالهوية السعودية والمحافظة
               عليها و نشر الصورة والقيم الإسلامية الحقيقية في حياة المواطن
               السعودي وتعميق أبعاده، والتعبير عن انجازات المملكة العربية
@@ -98,8 +93,8 @@ const styles = StyleSheet.create({
   },
   child: {
     backgroundColor: Colors.LIGHTGRAY,
-   // padding: 16,
-   paddingBottom: 0,
+    padding: 100,
+   //paddingBottom: 0,
     //flexDirection:'column',
     //alignContent:'stretch'
   }

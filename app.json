@@ -1,8 +1,7 @@
 {
   "expo": {
 
-    
-    "name": "MediaApp",
+    "name": "منصـة وزارة الإعلام",
     "slug": "MediaApp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -13,9 +12,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo2.png",
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#006749"
     },
@@ -25,8 +24,21 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package":"com.Media.wdalhaj",
+      "config": {
+          "googleMaps": {
+              "apiKey":"AIzaSyBWYxQZVieXVpiVr5GC2QuFIchLr9JcBH8"
+          }
+      }
+    },
+
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier":"com.Media.wdalhaj",
+      "config": {
+          "googleMapsApiKey":"AIzaSyBWYxQZVieXVpiVr5GC2QuFIchLr9JcBH8"
+      }
     }
   }
 }

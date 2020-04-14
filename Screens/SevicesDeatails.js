@@ -46,7 +46,7 @@ componentDidMount() {
            اسم النشاط في وزارة التجارة
             </Text>
              <Text style={{ fontFamily:'FontBold',paddingLeft: 15,paddingRight: 20,color:'#c5b358',}}> الفئة المستهدفة  </Text>
-              <TouchableOpacity style={FormsStyle.buttonShareing}
+              <TouchableOpacity style={FormsStyle.buttonContainer1}
                 onPress={() =>this.onShare(this.state.Item.id)}
             >
                 <Text style={FormsStyle.buttonText} > الذهاب الى الخدمة </Text>
