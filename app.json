@@ -10,11 +10,11 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/logo2.png",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#006749"
     },
@@ -25,7 +25,7 @@
       "**/*"
     ],
     "android": {
-      "package":"com.Media.wdalhaj",
+      "package":"com.Media.Gate",
       "config": {
           "googleMaps": {
               "apiKey":"AIzaSyBWYxQZVieXVpiVr5GC2QuFIchLr9JcBH8"
@@ -34,8 +34,8 @@
     },
 
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier":"com.Media.wdalhaj",
+      "supportsTablet": false,
+      "bundleIdentifier":"com.Media.Gate",
       "config": {
           "googleMapsApiKey":"AIzaSyBWYxQZVieXVpiVr5GC2QuFIchLr9JcBH8"
       }
